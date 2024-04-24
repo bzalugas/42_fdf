@@ -1,0 +1,4 @@
+* 42's so_long project
+This project aims to teach the basics of graphics project in C, including window management, event handling, colors, textures, etc.
+** Graphical library
+To help us use the graphics of the computer, we use the MiniLibx library, which was developed internally.
