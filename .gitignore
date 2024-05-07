@@ -1,5 +1,12 @@
 .DS_Store
 *.out
 *.o
+*.a
 *~
 obj/
+minilibx-linux.tgz
+minilibx_macos_sierra_20161017.tgz
+sources.tgz
+*.mp4
+fdf
+#fdf_*
