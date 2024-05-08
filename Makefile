@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 12:38:39 by bazaluga          #+#    #+#              #
-#    Updated: 2024/05/07 13:46:17 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/05/08 10:51:59 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -20,11 +20,13 @@ INCDIR	:=	include
 
 ifeq ($(shell uname), Linux)
 	MLXDIR	:=	mlx_linux
+
 else
-	MLXDIR	:=	mlx_macos
+	MLXDIR		:=	mlx_macos
+	INCFLAGS	:=	-framework OpenGL -framework AppKit
 endif
 
-MLXNAME	:=	libmlx.a
+MLX	:=	$(MLXDIR)/libmlx.a
 
 SRC		:=	test.c
 
@@ -54,14 +56,14 @@ $(OBJDIR)/%.o:	$(SRCDIR)/%.c | $(OBJDIR)
 				$(CC) $(CFLAGS) -I$(MLXDIR) -c $< -o $@
 				@echo $(RESET)
 
-$(MLXNAME):
+$(MLX):
 				@echo $(GREEN)"\n\tCOMPILING MLX"$(RESET)
 				@make -sC $(MLXDIR)
 				@echo $(GREEN)"\n\tMLX COMPILED\n"$(RESET)
 
-$(NAME):		$(OBJ) $(MLXDIR)/$(MLXNAME)
+$(NAME):		$(OBJ) $(MLX)
 				@echo $(GREEN)"LINKING objects to create $(NAME)"
-				$(CC) $(OBJ) -L$(MLXDIR) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+				$(CC) $(OBJ) -L$(MLXDIR) -lmlx $(INCFLAGS) -o $(NAME)
 				@printf $(RESET)
 
 clean:

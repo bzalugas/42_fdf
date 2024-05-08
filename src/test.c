@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:59:30 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/08 10:45:00 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/08 10:46:26 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(void)
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "TEST");
 	mlx_loop(mlx);
-	free(mlx_win);
-	free(mlx);
+	mlx_destroy_window(mlx, mlx_win);
 	return (0);
 }
