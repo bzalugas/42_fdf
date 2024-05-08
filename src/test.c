@@ -6,11 +6,11 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:59:30 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/07 13:44:56 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/08 10:45:00 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mlx_linux/mlx.h"
+#include "../include/mlx.h"
 #include <stdlib.h>
 
 int	main(void)
