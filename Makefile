@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 12:38:39 by bazaluga          #+#    #+#              #
-#    Updated: 2024/05/08 10:51:59 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/05/08 11:03:47 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -19,8 +19,8 @@ OBJDIR	:=	obj
 INCDIR	:=	include
 
 ifeq ($(shell uname), Linux)
-	MLXDIR	:=	mlx_linux
-
+	MLXDIR		:=	mlx_linux
+	INCFLAGS	:=	-lXext -lX11
 else
 	MLXDIR		:=	mlx_macos
 	INCFLAGS	:=	-framework OpenGL -framework AppKit
