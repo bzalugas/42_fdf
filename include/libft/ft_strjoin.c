@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/12 19:35:36 by bazaluga         ###   ########.fr       */
+/*   Created: 2023/11/23 16:26:35 by bazaluga          #+#    #+#             */
+/*   Updated: 2023/11/23 16:37:28 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_point
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	z;
-	int	new_coords[3];
-	int	color;
-}				t_point;
+	char	*new;
+	size_t	i;
+	size_t	j;
 
-typedef struct s_img
-{
-	void	*ptr;
-	char	*addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-}				t_img;
-
-typedef struct s_frame
-{
-	void	*mlx;
-	void	*win;
-}				t_frame;
-
-#endif
+	if (!s1 || !s2)
+		return (NULL);
+	new = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
+	if (!new)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[j])
+		new[i++] = s1[j++];
+	j = 0;
+	while (s2[j])
+		new[i++] = s2[j++];
+	return (new);
+}

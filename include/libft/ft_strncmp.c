@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/12 19:35:36 by bazaluga         ###   ########.fr       */
+/*   Created: 2023/11/13 14:00:48 by bazaluga          #+#    #+#             */
+/*   Updated: 2023/11/13 15:03:54 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_point
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	z;
-	int	new_coords[3];
-	int	color;
-}				t_point;
+	size_t	i;
 
-typedef struct s_img
-{
-	void	*ptr;
-	char	*addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-}				t_img;
-
-typedef struct s_frame
-{
-	void	*mlx;
-	void	*win;
-}				t_frame;
-
-#endif
+	i = 0;
+	while (n > 0 && (s1[i] || s2[i]) && i < n)
+	{
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
+}

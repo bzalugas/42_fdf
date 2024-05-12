@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/12 19:35:36 by bazaluga         ###   ########.fr       */
+/*   Created: 2023/11/28 19:28:58 by bazaluga          #+#    #+#             */
+/*   Updated: 2023/11/28 19:33:26 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_point
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	z;
-	int	new_coords[3];
-	int	color;
-}				t_point;
+	size_t	i;
 
-typedef struct s_img
-{
-	void	*ptr;
-	char	*addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-}				t_img;
-
-typedef struct s_frame
-{
-	void	*mlx;
-	void	*win;
-}				t_frame;
-
-#endif
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
+}

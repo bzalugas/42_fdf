@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/12 19:35:36 by bazaluga         ###   ########.fr       */
+/*   Created: 2023/11/25 22:39:38 by bazaluga          #+#    #+#             */
+/*   Updated: 2023/11/25 22:40:38 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_point
+char	*ft_strndup(const char *s, size_t len)
 {
-	int	z;
-	int	new_coords[3];
-	int	color;
-}				t_point;
+	size_t	real_len;
+	char	*new;
 
-typedef struct s_img
-{
-	void	*ptr;
-	char	*addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-}				t_img;
-
-typedef struct s_frame
-{
-	void	*mlx;
-	void	*win;
-}				t_frame;
-
-#endif
+	real_len = ft_strlen(s);
+	if (real_len < len)
+		len = real_len;
+	new = (char *)malloc(sizeof(char) * (len + 1));
+	if (!new)
+		return (NULL);
+	ft_strlcpy(new, s, len + 1);
+	return (new);
+}

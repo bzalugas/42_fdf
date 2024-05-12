@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/12 19:35:36 by bazaluga         ###   ########.fr       */
+/*   Created: 2024/02/17 04:30:11 by bazaluga          #+#    #+#             */
+/*   Updated: 2024/02/23 17:31:24 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_point
+long	ft_atol(const char *nptr)
 {
-	int	z;
-	int	new_coords[3];
-	int	color;
-}				t_point;
+	long	n;
+	int		sign;
+	size_t	i;
 
-typedef struct s_img
-{
-	void	*ptr;
-	char	*addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-}				t_img;
-
-typedef struct s_frame
-{
-	void	*mlx;
-	void	*win;
-}				t_frame;
-
-#endif
+	i = 0;
+	while (nptr[i] && ft_isspace(nptr[i]))
+		i++;
+	sign = 1;
+	if (nptr[i] && (nptr[i] == '-' || nptr[i] == '+'))
+	{
+		if (nptr[i] == '-')
+			sign = -1;
+		i++;
+	}
+	n = 0;
+	while (nptr[i] && ft_isdigit(nptr[i]))
+	{
+		n = n * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (n * sign);
+}

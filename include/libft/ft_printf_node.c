@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   node.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/12 19:35:36 by bazaluga         ###   ########.fr       */
+/*   Created: 2024/02/08 17:58:25 by bazaluga          #+#    #+#             */
+/*   Updated: 2024/02/23 17:46:59 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_point
+t_node	*node_new(t_type type, size_t len, void *content)
 {
-	int	z;
-	int	new_coords[3];
-	int	color;
-}				t_point;
+	t_node	*new;
 
-typedef struct s_img
+	new = (t_node *)malloc(sizeof(t_node));
+	if (!new)
+		return (NULL);
+	new->type = type;
+	new->len = len;
+	new->content = content;
+	new->next = NULL;
+	return (new);
+}
+
+t_node	*node_get_next_conversion(t_node *node)
 {
-	void	*ptr;
-	char	*addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-}				t_img;
-
-typedef struct s_frame
-{
-	void	*mlx;
-	void	*win;
-}				t_frame;
-
-#endif
+	while (node && (node->type == LIT || node->type == CONV))
+		node = node->next;
+	return (node);
+}

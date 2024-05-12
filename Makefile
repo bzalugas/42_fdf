@@ -6,40 +6,44 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 12:38:39 by bazaluga          #+#    #+#              #
-#    Updated: 2024/05/11 11:15:46 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/05/12 19:50:57 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME	:=	fdf
+NAME	    :=	fdf
 
-SRCDIR	:=	src
+SRCDIR	    :=	src
 
-OBJDIR	:=	obj
+OBJDIR	    :=	obj
 
-INCDIR	:=	include
+INCDIR	    :=	include
+
+LIBFTDIR    :=	$(INCDIR)/libft
+
+LIBFT	    :=	$(LIBFTDIR)/libft.a
 
 ifeq ($(shell uname), Linux)
-	MLXDIR	    :=	mlx_linux
+	MLXDIR	    :=	$(INCDIR)/mlx_linux
 	INCFLAGS    :=	-lXext -lX11
 
 else
-	MLXDIR	    :=	mlx_macos
+	MLXDIR	    :=	$(INCDIR)/mlx_macos
 	INCFLAGS    :=	-framework OpenGL -framework AppKit
 endif
 
-MLX	:=  $(MLXDIR)/libmlx.a
+MLX	    :=  $(MLXDIR)/libmlx.a
 
-SRC	:=  test.c
+SRC	    :=  test.c
 
-OBJ     :=  $(SRC:.c=.o)
+OBJ	    :=  $(SRC:.c=.o)
 
-SRC     :=  $(addprefix $(SRCDIR)/, $(SRC))
+SRC	    :=  $(addprefix $(SRCDIR)/, $(SRC))
 
-OBJ     :=  $(addprefix $(OBJDIR)/, $(OBJ))
+OBJ	    :=  $(addprefix $(OBJDIR)/, $(OBJ))
 
-CC	:=  cc
+CC	    :=  cc
 
-CFLAGS	:=  -Wall -Wextra -Werror -MMD
+CFLAGS	    :=  -Wall -Wextra -Werror -MMD
 
 ########### COLORS ##########
 
@@ -62,7 +66,12 @@ $(MLX):
 		@make -sC $(MLXDIR)
 		@echo $(GREEN)"\n\tMLX COMPILED\n"$(RESET)
 
-$(NAME):	$(OBJ) $(MLX)
+$(LIBFT):
+		@echo $(GREEN)"\n\tCOMPILING LIBFT"$(RESET)
+		@make -sC $(LIBFTDIR)
+		@echo $(GREEN)"\n\tLIBFT COMPILED"$(RESET)
+
+$(NAME):	$(OBJ) $(MLX) $(LIBFT)
 		@echo $(GREEN)"LINKING objects to create $(NAME)"
 		$(CC) $(OBJ) -L$(MLXDIR) -lmlx $(INCFLAGS) -o $(NAME)
 		@printf $(RESET)

@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/12 19:35:36 by bazaluga         ###   ########.fr       */
+/*   Created: 2023/12/03 20:29:51 by bazaluga          #+#    #+#             */
+/*   Updated: 2023/12/03 20:32:26 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_point
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	z;
-	int	new_coords[3];
-	int	color;
-}				t_point;
+	long	ln;
 
-typedef struct s_img
-{
-	void	*ptr;
-	char	*addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-}				t_img;
-
-typedef struct s_frame
-{
-	void	*mlx;
-	void	*win;
-}				t_frame;
-
-#endif
+	ln = n;
+	if (ln < 0)
+	{
+		ln *= -1;
+		ft_putchar_fd('-', fd);
+	}
+	if (ln > 9)
+		ft_putnbr_fd((int)(ln / 10), fd);
+	ft_putchar_fd(ln % 10 + '0', fd);
+}
