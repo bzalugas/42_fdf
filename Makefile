@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 12:38:39 by bazaluga          #+#    #+#              #
-#    Updated: 2024/05/12 19:50:57 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/05/13 18:26:13 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -24,16 +24,16 @@ LIBFT	    :=	$(LIBFTDIR)/libft.a
 
 ifeq ($(shell uname), Linux)
 	MLXDIR	    :=	$(INCDIR)/mlx_linux
-	INCFLAGS    :=	-lXext -lX11
+	INCFLAGS    :=	-L$(LIBFTDIR) -lft -lXext -lX11
 
 else
 	MLXDIR	    :=	$(INCDIR)/mlx_macos
-	INCFLAGS    :=	-framework OpenGL -framework AppKit
+	INCFLAGS    :=	-L$(LIBFTDIR) -lft -framework OpenGL -framework AppKit
 endif
 
 MLX	    :=  $(MLXDIR)/libmlx.a
 
-SRC	    :=  test.c
+SRC	    :=  test.c garbage_collector.c
 
 OBJ	    :=  $(SRC:.c=.o)
 
