@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/13 19:25:46 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:39:15 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,18 @@ typedef struct s_img
 {
 	void	*ptr;
 	char	*addr;
-	int		bits_per_pixel;
+	int		bpp; //bits_per_pixel
 	int		size_line;
 	int		endian;
 }				t_img;
 
-typedef struct s_frame
+typedef struct s_fdata
 {
-	void	*mlx;
-	void	*win;
-}				t_frame;
-
-typedef struct s_all
-{
-	t_img	*img;
+	t_img	img;
 	void	*mlx;
 	void	*win;
 	t_list	*garbage;
-}				t_all;
+}				t_fdata;
 
 /************************** GARBAGE COLLECTOR *********************************/
 
