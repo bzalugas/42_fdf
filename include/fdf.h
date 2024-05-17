@@ -6,13 +6,29 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/16 18:39:15 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/17 19:09:25 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 # include "libft/libft.h"
+
+typedef enum e_event
+{
+	KEYDOWN = 2,
+	KEYUP = 3,
+	MOUSEDOWN = 4,
+	MOUSEUP = 5,
+	MOUSEMOVE = 6,
+	EXPOSE = 12,
+	DESTROY = 17
+}				t_event;
+
+typedef enum e_key
+{
+	ESC = 65307
+}			t_key;
 
 typedef struct s_point
 {
@@ -41,9 +57,12 @@ typedef struct s_fdata
 }				t_fdata;
 
 /************************** GARBAGE COLLECTOR *********************************/
-
 void	*ft_mylloc(size_t size, t_list **garbage);
 void	*ft_cylloc(size_t nmemb, size_t size, t_list **garbage);
 void	ft_empty_trash(t_list **garbage);
+
+/*********************************** COLORS ***********************************/
+int		trgb_to_i(int t, int r, int g, int b);
+int		i_to_trgb(int color, int *r, int *g, int *b);
 
 #endif
