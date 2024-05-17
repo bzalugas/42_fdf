@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 12:38:39 by bazaluga          #+#    #+#              #
-#    Updated: 2024/05/13 18:26:13 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/05/17 14:19:04 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -33,7 +33,7 @@ endif
 
 MLX	    :=  $(MLXDIR)/libmlx.a
 
-SRC	    :=  test.c garbage_collector.c
+SRC	    :=  test.c garbage_collector.c colors.c
 
 OBJ	    :=  $(SRC:.c=.o)
 
