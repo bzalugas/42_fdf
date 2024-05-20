@@ -11,6 +11,11 @@ To help us use the graphics of the computer, we use the MiniLibx library, which 
 :END:
 *** CODING fdf program
 :LOGBOOK:
+CLOCK: [2024-05-20 Mon 19:31]--[2024-05-20 Mon 19:42] =>  0:11
+CLOCK: [2024-05-20 Mon 15:14]--[2024-05-20 Mon 18:54] =>  3:40
+CLOCK: [2024-05-20 Mon 11:11]--[2024-05-20 Mon 11:27] =>  0:16
+CLOCK: [2024-05-20 Mon 10:07]--[2024-05-20 Mon 10:39] =>  0:32
+CLOCK: [2024-05-20 Mon 08:53]--[2024-05-20 Mon 09:33] =>  0:40
 CLOCK: [2024-05-17 Fri 17:45]--[2024-05-17 Fri 18:15] =>  0:30
 CLOCK: [2024-05-17 Fri 16:55]--[2024-05-17 Fri 17:15] =>  0:20
 CLOCK: [2024-05-17 Fri 12:30]--[2024-05-17 Fri 15:30] =>  3:00

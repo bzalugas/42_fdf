@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 12:38:39 by bazaluga          #+#    #+#              #
-#    Updated: 2024/05/17 14:19:04 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/05/20 16:59:23 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,18 +22,24 @@ LIBFTDIR    :=	$(INCDIR)/libft
 
 LIBFT	    :=	$(LIBFTDIR)/libft.a
 
+SRC	    :=  test.c garbage_collector.c colors.c
+
+SRCMACOS    :=	mlx_compat_macos.c
+
+SRCLINUX    :=	mlx_compat_linux.c
+
 ifeq ($(shell uname), Linux)
 	MLXDIR	    :=	$(INCDIR)/mlx_linux
 	INCFLAGS    :=	-L$(LIBFTDIR) -lft -lXext -lX11
+	SRC	    :=	$(SRC) $(SRCLINUX)
 
 else
 	MLXDIR	    :=	$(INCDIR)/mlx_macos
 	INCFLAGS    :=	-L$(LIBFTDIR) -lft -framework OpenGL -framework AppKit
+	SRC	    :=	$(SRC) $(SRCMACOS)
 endif
 
 MLX	    :=  $(MLXDIR)/libmlx.a
-
-SRC	    :=  test.c garbage_collector.c colors.c
 
 OBJ	    :=  $(SRC:.c=.o)
 
@@ -43,7 +49,7 @@ OBJ	    :=  $(addprefix $(OBJDIR)/, $(OBJ))
 
 CC	    :=  cc
 
-CFLAGS	    :=  -Wall -Wextra -Werror -MMD
+CFLAGS	    :=  -Wall -Wextra -Werror -MMD -g
 
 ########### COLORS ##########
 
@@ -80,13 +86,15 @@ clean:
 		@echo $(RED)"CLEANING OBJS"
 		rm -f $(OBJ)
 		rm -f $(OBJ:.o=.d)
-		make -sC $(MLXDIR) clean
+		@make -sC $(MLXDIR) clean
+		@make -sC $(LIBFTDIR) clean
 		@echo $(RESET)
 
 fclean:		clean
 		@echo $(RED)"CLEANING ALL"
 		rm -f $(NAME)
 		rm -rf *.dSYM
+		@make -sC $(LIBFTDIR) fclean
 		@echo $(RESET)
 
 re:		fclean

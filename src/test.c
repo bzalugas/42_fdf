@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:59:30 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/17 19:10:08 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/20 19:38:53 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "../include/fdf.h"
 #include "../include/libft/libft.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 void	pixel_put_img(t_img *img, int x, int y, int color)
 {
@@ -30,25 +29,29 @@ int	end_fdf(t_fdata *data)
 		mlx_destroy_image(data->mlx, data->img.ptr);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
+	mlx2_destroy_display(data->mlx);
 	ft_empty_trash(&data->garbage);
 	exit(0);
 }
 
 int	handle_esc(int keycode, t_fdata *data)
 {
-	/* ft_printf("code = %d\n", keycode); */
-	if (keycode != ESC)
+	if (keycode != ESC && keycode != ESCM)
 		return (1);
 	if (data->img.ptr)
 		mlx_destroy_image(data->mlx, data->img.ptr);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
+	mlx2_destroy_display(data->mlx);
 	ft_empty_trash(&data->garbage);
 	exit(0);
+}
+
+int	get_keycode(int keycode, void *param)
+{
+	(void)param;
+	ft_printf("keycode = %d\n", keycode);
+	return (0);
 }
 
 int	main(void)
@@ -72,7 +75,7 @@ int	main(void)
 	{
 		j = -1;
 		while (++j < 500)
-			pixel_put_img(&data.img, i, j, 0x00F5F5F5);
+			pixel_put_img(&data.img, i, j, 0x00FF23F5);
 	}
 	mlx_put_image_to_window(data.mlx, data.win, data.img.ptr, 590, 225);
 	mlx_hook(data.win, DESTROY, 0, &end_fdf, &data);

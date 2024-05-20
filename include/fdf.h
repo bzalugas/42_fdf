@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/17 19:09:25 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/20 11:36:59 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,15 @@ typedef enum e_event
 	DESTROY = 17
 }				t_event;
 
-typedef enum e_key
+typedef enum e_key_linux
 {
 	ESC = 65307
-}			t_key;
+}			t_key_linux;
+
+typedef enum e_key_macos
+{
+	ESCM = 53
+}			t_key_macos;
 
 typedef struct s_point
 {
@@ -64,5 +69,8 @@ void	ft_empty_trash(t_list **garbage);
 /*********************************** COLORS ***********************************/
 int		trgb_to_i(int t, int r, int g, int b);
 int		i_to_trgb(int color, int *r, int *g, int *b);
+
+/************************** COMPATIBILITY FUNCTIONS ***************************/
+int		mlx2_destroy_display(void *xvar);
 
 #endif
