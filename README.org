@@ -25,6 +25,7 @@ CLOCK: [2024-05-13 Mon 18:05]--[2024-05-13 Mon 19:37] =>  1:32
 **** CODING Parsing
 SCHEDULED: <2024-05-21 Tue>-<2024-05-23 Thu>
 :LOGBOOK:
+CLOCK: [2024-05-21 Tue 15:10]--[2024-05-21 Tue 15:48] =>  0:38
 CLOCK: [2024-05-21 Tue 11:55]--[2024-05-21 Tue 14:07] =>  2:12
 :END:
 *** IN PROGRESS think/test/etc

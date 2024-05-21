@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:55:11 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/21 14:06:47 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:46:54 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,17 @@ t_list	*parse_map(int fd, t_fdata *data)
 	t_list	*points;
 	char	*line;
 	int		nline;
+	int		res;
 
 	line = get_next_line(fd);
 	nline = 0;
+	points = NULL;
 	while (line)
 	{
-		get_points_line(line, &points, data, nline);
+		res = get_points_line(line, &points, data, nline);
 		free(line);
+		if (!res)
+			stop_error("Problem while parsing the map", data, 5);
 		line = get_next_line(fd);
 		nline++;
 	}
