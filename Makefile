@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 12:38:39 by bazaluga          #+#    #+#              #
-#    Updated: 2024/05/21 15:40:29 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/05/21 23:09:15 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,8 +22,9 @@ LIBFTDIR    :=	$(INCDIR)/libft
 
 LIBFT	    :=	$(LIBFTDIR)/libft.a
 
-SRC	    :=  colors.c ft_atoi_forward.c ft_lstnew2.c garbage_collector.c \
-		main.c map_parsing.c point_handling.c
+SRC	    :=  colors.c end_handling.c ft_atoi_forward.c ft_atou_base_forward.c\
+		ft_lstnew2.c garbage_collector.c main.c map_parsing.c \
+		point_handling.c
 
 SRCMACOS    :=	mlx_compat_macos.c
 

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:38:44 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/21 13:42:29 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/21 23:33:40 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	*ft_add_garbage(t_list **trash, void *ptr)
 	if (!ft_lstadd_back(trash, garbage))
 		return (NULL);
 	return (garbage);
-
 }
 
 void	ft_empty_trash(t_list **trash)

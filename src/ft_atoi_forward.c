@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 12:17:00 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/21 12:24:36 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/21 21:19:15 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ int	ft_atoi_forward(const char *nptr, int *i)
 			sign = -1;
 		(*i)++;
 	}
-	return (get_nb(&nptr[*i], sign, i));
+	return (get_nb(nptr, sign, i));
 }

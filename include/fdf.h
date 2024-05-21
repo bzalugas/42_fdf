@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/21 15:46:04 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/21 23:02:59 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,31 +58,36 @@ typedef struct s_fdata
 	t_img	img;
 	void	*mlx;
 	void	*win;
+	int		fd;
 	t_list	*trash;
 }				t_fdata;
 
 /************************************ MAIN ************************************/
-t_list	*parse_map(int fd, t_fdata *data);
-int		stop_error(char *msg, t_fdata *data, int error);
+t_point			***parse_map(t_fdata *data);
 
 /************************** GARBAGE COLLECTOR *********************************/
-void	*ft_mylloc(size_t size, t_list **trash);
-void	*ft_cylloc(size_t nmemb, size_t size, t_list **trash);
-void	*ft_add_garbage(t_list **trash, void *ptr);
-void	ft_empty_trash(t_list **trash);
+void			*ft_mylloc(size_t size, t_list **trash);
+void			*ft_cylloc(size_t nmemb, size_t size, t_list **trash);
+void			*ft_add_garbage(t_list **trash, void *ptr);
+void			ft_empty_trash(t_list **trash);
 
 /*********************************** COLORS ***********************************/
-int		trgb_to_i(int t, int r, int g, int b);
-int		i_to_trgb(int color, int *r, int *g, int *b);
+int				trgb_to_i(int t, int r, int g, int b);
+int				i_to_trgb(int color, int *r, int *g, int *b);
 
 /************************** COMPATIBILITY FUNCTIONS ***************************/
-int		mlx2_destroy_display(void *xvar);
+int				mlx2_destroy_display(void *xvar);
 
 /****************************** POINTS FUNCTIONS ******************************/
-t_point	*new_point(t_point **res, t_point p, t_fdata *data);
+t_point			*new_point(t_point **res, t_point p, t_fdata *data);
+t_point			***alloc_point_arr(int rows, int cols, t_fdata *d);
 
 /*********************************** UTILS ************************************/
-int		ft_atoi_forward(const char *nptr, int *i);
-t_list	*ft_lstnew2(void *content, t_list **trash);
+int				ft_atoi_forward(const char *nptr, int *i);
+unsigned int	ft_atou_base_forward(const char *nptr, const char *base, int *i);
+t_list			*ft_lstnew2(void *content, t_list **trash);
+int				end_fdf(t_fdata *data, int exit_code);
+int				stop_perror(char *msg, t_fdata *data, int error);
+int				stop_error(char *msg, t_fdata *data);
 
 #endif
