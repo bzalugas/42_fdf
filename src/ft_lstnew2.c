@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstnew2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/09 14:04:08 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/21 13:04:08 by bazaluga         ###   ########.fr       */
+/*   Created: 2024/05/21 13:28:24 by bazaluga          #+#    #+#             */
+/*   Updated: 2024/05/21 13:49:23 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/fdf.h"
 
-void	*ft_lstadd_front(t_list **lst, t_list *new)
+t_list	*ft_lstnew2(void *content, t_list **trash)
 {
-	t_list	*old;
+	t_list	*new;
 
-	if (!lst || !new)
+	new = (t_list *)ft_mylloc(sizeof(t_list), trash);
+	if (!new)
 		return (NULL);
-	old = *lst;
-	*lst = new;
-	if (new)
-		new->next = old;
+	new->content = content;
+	new->next = NULL;
 	return (new);
 }

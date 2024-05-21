@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   point_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/09 14:04:08 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/21 13:04:08 by bazaluga         ###   ########.fr       */
+/*   Created: 2024/05/21 12:33:10 by bazaluga          #+#    #+#             */
+/*   Updated: 2024/05/21 13:58:27 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/fdf.h"
 
-void	*ft_lstadd_front(t_list **lst, t_list *new)
+t_point	*new_point(t_point **res, t_point p, t_fdata *data)
 {
-	t_list	*old;
+	t_point	*point;
 
-	if (!lst || !new)
-		return (NULL);
-	old = *lst;
-	*lst = new;
-	if (new)
-		new->next = old;
-	return (new);
+	point = ft_cylloc(1, sizeof(t_point *), &data->garbage);
+	*point = p;
+	return (point);
 }

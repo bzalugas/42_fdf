@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/20 11:36:59 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:58:37 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,14 @@ typedef struct s_fdata
 	t_img	img;
 	void	*mlx;
 	void	*win;
-	t_list	*garbage;
+	t_list	*trash;
 }				t_fdata;
 
 /************************** GARBAGE COLLECTOR *********************************/
-void	*ft_mylloc(size_t size, t_list **garbage);
-void	*ft_cylloc(size_t nmemb, size_t size, t_list **garbage);
-void	ft_empty_trash(t_list **garbage);
+void	*ft_mylloc(size_t size, t_list **trash);
+void	*ft_cylloc(size_t nmemb, size_t size, t_list **trash);
+void	*ft_add_garbage(t_list **trash, void *ptr);
+void	ft_empty_trash(t_list **trash);
 
 /*********************************** COLORS ***********************************/
 int		trgb_to_i(int t, int r, int g, int b);
@@ -72,5 +73,13 @@ int		i_to_trgb(int color, int *r, int *g, int *b);
 
 /************************** COMPATIBILITY FUNCTIONS ***************************/
 int		mlx2_destroy_display(void *xvar);
+
+/****************************** POINTS FUNCTIONS ******************************/
+/* t_point	*new_point(t_point p, t_fdata *data); */
+t_point	*new_point(t_point **res, t_point p, t_fdata *data);
+
+/*********************************** UTILS ************************************/
+int		ft_atoi_forward(const char *nptr, int *i);
+t_list	*ft_lstnew2(void *content, t_list **trash);
 
 #endif

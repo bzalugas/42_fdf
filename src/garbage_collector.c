@@ -6,32 +6,47 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:38:44 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/13 19:25:54 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:42:29 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 #include "../include/libft/libft.h"
 
-void	*ft_mylloc(size_t size, t_list **garbage)
+void	*ft_mylloc(size_t size, t_list **trash)
 {
 	void	*addr;
 
 	addr = malloc(size);
-	ft_lstadd_back(garbage, ft_lstnew(addr));
+	if (!ft_lstadd_back(trash, ft_lstnew(addr)))
+		return (NULL);
 	return (addr);
 }
 
-void	*ft_cylloc(size_t nmemb, size_t size, t_list **garbage)
+void	*ft_cylloc(size_t nmemb, size_t size, t_list **trash)
 {
 	void	*ptr;
 
 	ptr = ft_calloc(nmemb, size);
-	ft_lstadd_back(garbage, ft_lstnew(ptr));
+	if (!ft_lstadd_back(trash, ft_lstnew(ptr)))
+		return (NULL);
 	return (ptr);
 }
 
-void	ft_empty_trash(t_list **garbage)
+void	*ft_add_garbage(t_list **trash, void *ptr)
 {
-	ft_lstclear(garbage, free);
+	t_list	*garbage;
+
+	if (!trash)
+		return (NULL);
+	garbage = ft_lstnew(ptr);
+	if (!ft_lstadd_back(trash, garbage))
+		return (NULL);
+	return (garbage);
+
+}
+
+void	ft_empty_trash(t_list **trash)
+{
+	ft_lstclear(trash, free);
 }
