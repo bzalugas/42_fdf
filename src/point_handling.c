@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 12:33:10 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/21 22:36:16 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/22 12:35:27 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_point	***alloc_point_arr(int rows, int cols, t_fdata *d)
 	while (i < rows)
 	{
 		arr[i] = (t_point **)ft_cylloc((cols + 1), sizeof(t_point *),
-			&d->trash);
+				&d->trash);
 		if (!arr[i])
 			stop_error("Error while creating points array", d);
 		i++;
