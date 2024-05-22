@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:12:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/22 11:46:34 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:54:40 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,28 @@ static int	check_name(char *s)
 	return (1);
 }
 
+static void	display(t_fdata *d, t_pts_arr *pts)
+{
+	(void)pts;
+	d->mlx = mlx_init();
+	if (!d->mlx)
+		stop_error("Error at mlx initialization", d);
+	d->win = mlx_new_window(d->mlx, 1680, 900, "FdF");
+	if (!d->win)
+		stop_error("Error at mlx window initialization", d);
+	put_points(d);
+	/* mlx_loop_hook(d->mlx, &put_points, d); */
+	mlx_hook(d->win, DESTROY, 0, &handle_close, d);
+	mlx_hook(d->win, KEYDOWN, 1L<<0, &handle_key, d);
+	mlx_loop(d->mlx);
+}
+
 int	main(int ac, char *av[])
 {
-	t_fdata	d;
-	t_point	***pts;
+	t_fdata		d;
+	t_pts_arr	pts;
 
-	d = (t_fdata){(t_img){0}, NULL, NULL, -1, NULL};
+	d = (t_fdata){NULL, NULL, (t_img){0}, (t_pts_arr){0}, -1, NULL};
 	if (ac != 2)
 		stop_perror("Please provide a valid file name as argument", &d, EINVAL);
 	check_name(av[1]);
@@ -88,7 +104,8 @@ int	main(int ac, char *av[])
 	pts = parse_map(&d);
 	close(d.fd);
 	d.fd = -1;
-	print_pts(pts);
+	d.pts = pts;
+	display(&d, &pts);
 	end_fdf(&d, 0);
 	return (0);
 }

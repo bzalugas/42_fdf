@@ -22,7 +22,12 @@ CLOCK: [2024-05-17 Fri 16:55]--[2024-05-17 Fri 17:15] =>  0:20
 CLOCK: [2024-05-17 Fri 12:30]--[2024-05-17 Fri 15:30] =>  3:00
 CLOCK: [2024-05-13 Mon 18:05]--[2024-05-13 Mon 19:37] =>  1:32
 :END:
-**** CODING Parsing
+**** CODING Display points w/out perspective
+:LOGBOOK:
+CLOCK: [2024-05-22 Wed 12:40]--[2024-05-22 Wed 14:02] =>  1:22
+:END:
+**** CODED Parsing
+CLOSED: [2024-05-22 Wed 12:39]
 SCHEDULED: <2024-05-21 Tue>-<2024-05-23 Thu>
 :LOGBOOK:
 CLOCK: [2024-05-21 Tue 22:40]--[2024-05-21 Tue 23:35] =>  0:55

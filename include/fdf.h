@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/21 23:02:59 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:53:18 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,34 @@ typedef struct s_point
 	unsigned int	color;
 }				t_point;
 
+typedef struct s_pts_arr
+{
+	int	rows;
+	int	cols;
+	t_point	***arr;
+}				t_pts_arr;
+
 typedef struct s_img
 {
 	void	*ptr;
 	char	*addr;
 	int		bpp; //bits_per_pixel
-	int		size_line;
-	int		endian;
+	int		size; //size_line
+	int		end; //endian
 }				t_img;
 
 typedef struct s_fdata
 {
-	t_img	img;
 	void	*mlx;
 	void	*win;
+	t_img	img;
+	t_pts_arr	pts;
 	int		fd;
 	t_list	*trash;
 }				t_fdata;
 
 /************************************ MAIN ************************************/
-t_point			***parse_map(t_fdata *data);
+t_pts_arr		parse_map(t_fdata *data);
 
 /************************** GARBAGE COLLECTOR *********************************/
 void			*ft_mylloc(size_t size, t_list **trash);
@@ -71,16 +79,22 @@ void			*ft_cylloc(size_t nmemb, size_t size, t_list **trash);
 void			*ft_add_garbage(t_list **trash, void *ptr);
 void			ft_empty_trash(t_list **trash);
 
-/*********************************** COLORS ***********************************/
+/********************************* MLX UTILS **********************************/
 int				trgb_to_i(int t, int r, int g, int b);
 int				i_to_trgb(int color, int *r, int *g, int *b);
+void			pixel_put_img(t_img *img, int x, int y, int color);
+int				put_points(t_fdata *d);
+
+/******************************* EVENTS HANDLING ******************************/
+int				handle_close(t_fdata *data);
+int				handle_key(int keycode, t_fdata *data);
 
 /************************** COMPATIBILITY FUNCTIONS ***************************/
 int				mlx2_destroy_display(void *xvar);
 
 /****************************** POINTS FUNCTIONS ******************************/
 t_point			*new_point(t_point **res, t_point p, t_fdata *data);
-t_point			***alloc_point_arr(int rows, int cols, t_fdata *d);
+t_point			***alloc_point_arr(t_pts_arr *pts, t_fdata *d);
 
 /*********************************** UTILS ************************************/
 int				ft_atoi_forward(const char *nptr, int *i);

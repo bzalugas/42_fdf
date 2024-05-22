@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:59:30 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/20 19:38:53 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:04:53 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,6 @@
 #include "../include/fdf.h"
 #include "../include/libft/libft.h"
 #include <stdlib.h>
-
-void	pixel_put_img(t_img *img, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = img->addr + (x * (img->bpp / 8) + y * img->size_line);
-	*(unsigned int *)dst = color;
-}
-
-int	end_fdf(t_fdata *data)
-{
-	if (data->img.ptr)
-		mlx_destroy_image(data->mlx, data->img.ptr);
-	if (data->win)
-		mlx_destroy_window(data->mlx, data->win);
-	mlx2_destroy_display(data->mlx);
-	ft_empty_trash(&data->garbage);
-	exit(0);
-}
 
 int	handle_esc(int keycode, t_fdata *data)
 {
@@ -43,7 +24,7 @@ int	handle_esc(int keycode, t_fdata *data)
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	mlx2_destroy_display(data->mlx);
-	ft_empty_trash(&data->garbage);
+	ft_empty_trash(&data->trash);
 	exit(0);
 }
 

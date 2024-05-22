@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:55:11 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/21 23:35:19 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:36:22 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	get_points_line(char *line, t_list **pts, t_fdata *data, int n)
 	return (x);
 }
 
-static t_list	*get_points(int fd, t_fdata *data, int size[2])
+static t_list	*get_points(int fd, t_fdata *data, t_pts_arr *pts)
 {
 	t_list	*points;
 	char	*line;
@@ -91,34 +91,34 @@ static t_list	*get_points(int fd, t_fdata *data, int size[2])
 		line = get_next_line(fd);
 		row++;
 	}
-	size[0] = row;
-	size[1] = res;
+	pts->rows = row;
+	pts->cols = res;
 	return (points);
 }
 
-t_point	***parse_map(t_fdata *data)
+t_pts_arr	parse_map(t_fdata *data)
 {
-	t_list	*pts;
-	t_list	*tmp;
-	t_point	***arr;
-	int		size[2];
-	int		index[2];
+	t_list		*pts;
+	t_list		*tmp;
+	t_pts_arr	pts_arr;
+	int			index[2];
 
-	pts = get_points(data->fd, data, size);
-	arr = alloc_point_arr(size[0], size[1], data);
+	pts_arr = (t_pts_arr){0};
+	pts = get_points(data->fd, data, &pts_arr);
+	pts_arr.arr = alloc_point_arr(&pts_arr, data);
 	tmp = pts;
 	index[0] = 0;
-	while (tmp && index[0] < size[0])
+	while (tmp && index[0] < pts_arr.rows)
 	{
 		index[1] = 0;
-		while (tmp && index[1] < size[1])
+		while (tmp && index[1] < pts_arr.cols)
 		{
-			arr[index[0]][index[1]] = (t_point *)tmp->content;
+			pts_arr.arr[index[0]][index[1]] = (t_point *)tmp->content;
 			tmp = tmp->next;
 			index[1]++;
 		}
 		index[0]++;
 	}
 	ft_lstclear(&pts, NULL);
-	return (arr);
+	return (pts_arr);
 }

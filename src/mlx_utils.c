@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 13:54:35 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/17 14:11:38 by bazaluga         ###   ########.fr       */
+/*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
+/*   Updated: 2024/05/22 14:01:28 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
+#include "../include/mlx.h"
 
 /*
 ** Convert 4 values of a color to an int
@@ -35,4 +36,42 @@ int	i_to_trgb(int color, int *r, int *g, int *b)
 	if (b)
 		*b = color & 0xFF;
 	return ((color >> 24) & 0xFF);
+}
+
+void	pixel_put_img(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = img->addr + (x * (img->bpp / 8) + y * img->size);
+	*(unsigned int *)dst = color;
+}
+
+int	put_points(t_fdata *d)
+{
+	int			i;
+	int			j;
+	t_pts_arr	*pts;
+
+	pts = &d->pts;
+	if (!d->img.ptr)
+	{
+		d->img.ptr = mlx_new_image(d->mlx, pts->cols * 100, pts->rows * 100);
+		if (!d->img.ptr)
+			stop_error("Error while creating image", d);
+		d->img.addr = mlx_get_data_addr(d->img.ptr, &d->img.bpp, &d->img.size,
+						&d->img.end);
+	}
+	i = 0;
+	while (pts->arr[i])
+	{
+		j = 0;
+		while (pts->arr[i][j])
+		{
+			pixel_put_img(&d->img, i * 10, j * 10, 0xFFFFFFFF);
+			j++;
+		}
+		i++;
+	}
+	mlx_put_image_to_window(d->mlx, d->win, d->img.ptr, 0, 0);
+	return (1);
 }
