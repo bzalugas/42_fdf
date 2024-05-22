@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:12:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/21 23:34:24 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:46:34 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ int	main(int ac, char *av[])
 	t_fdata	d;
 	t_point	***pts;
 
+	d = (t_fdata){(t_img){0}, NULL, NULL, -1, NULL};
 	if (ac != 2)
 		stop_perror("Please provide a valid file name as argument", &d, EINVAL);
 	check_name(av[1]);
-	d = (t_fdata){(t_img){0}, NULL, NULL, -1, NULL};
 	d.fd = open(av[1], O_RDONLY);
 	if (d.fd == -1)
 		stop_perror("Error while opening given file name", &d, 0);
