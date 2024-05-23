@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:55:11 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/23 13:35:46 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:49:01 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,9 @@ static t_list	*get_points(int fd, t_fdata *data, t_pts_arr *pts)
 		line = get_next_line(fd);
 		row++;
 	}
-	pts->rows = row;
-	pts->cols = res;
+	pts->r = row;
+	pts->c = res;
+	pts->size = row * res;
 	return (points);
 }
 
@@ -105,23 +106,18 @@ t_pts_arr	parse_map(t_fdata *data)
 	t_list		*pts;
 	t_list		*tmp;
 	t_pts_arr	pts_arr;
-	int			index[2];
+	int			i;
 
 	pts_arr = (t_pts_arr){0};
 	pts = get_points(data->fd, data, &pts_arr);
 	pts_arr.arr = alloc_point_arr(&pts_arr, data);
 	tmp = pts;
-	index[0] = 0;
-	while (tmp && index[0] < pts_arr.rows)
+	i = 0;
+	while (tmp && i < pts_arr.size)
 	{
-		index[1] = 0;
-		while (tmp && index[1] < pts_arr.cols)
-		{
-			pts_arr.arr[index[0]][index[1]] = (t_point *)tmp->content;
-			tmp = tmp->next;
-			index[1]++;
-		}
-		index[0]++;
+		pts_arr.arr[i] = (t_point *)tmp->content;
+		tmp = tmp->next;
+		i++;
 	}
 	ft_lstclear(&pts, NULL);
 	return (pts_arr);

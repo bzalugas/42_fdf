@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:12:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/23 10:24:49 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:52:11 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,18 @@ void	print_points(t_list *points)
 	write(1, "\n", 1);
 }
 
-void	print_pts(t_point ***pts)
+void	print_pts(t_point **pts, int cols)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (pts[i])
 	{
-		j = 0;
-		while (pts[i][j])
-		{
-			ft_printf("%d", pts[i][j]->h);
-			if (pts[i][j + 1])
+		ft_printf("%d", pts[i]->h);
+			if (i % cols != cols - 1)
 				write(1, " ", 1);
-			j++;
-		}
-		write(1, "\n", 1);
+			else
+				write(1, "\n", 1);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/23 10:27:54 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:48:36 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ void	pixel_put_img(t_img *img, int x, int y, int color)
 int	put_points(t_fdata *d)
 {
 	int			i;
-	int			j;
 	t_pts_arr	*pts;
+	int			color;
 
 	pts = &d->pts;
 	if (!d->img.ptr)
 	{
-		d->img.ptr = mlx_new_image(d->mlx, pts->cols * 100, pts->rows * 100);
+		d->img.ptr = mlx_new_image(d->mlx, pts->c * pts->c, pts->r * pts->r);
 		if (!d->img.ptr)
 			stop_error("Error while creating image", d);
 		d->img.addr = mlx_get_data_addr(d->img.ptr, &d->img.bpp, &d->img.size,
@@ -64,12 +64,8 @@ int	put_points(t_fdata *d)
 	i = 0;
 	while (pts->arr[i])
 	{
-		j = 0;
-		while (pts->arr[i][j])
-		{
-			pixel_put_img(&d->img, i * 10, j * 10, pts->arr[i][j]->color);
-			j++;
-		}
+		color = pts->arr[i]->color;
+		pixel_put_img(&d->img, (i % pts->c) * 10, (i / pts->c) * 10, color);
 		i++;
 	}
 	mlx_put_image_to_window(d->mlx, d->win, d->img.ptr, 0, 0);

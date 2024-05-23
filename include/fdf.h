@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/22 13:53:18 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:53:27 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ typedef struct s_point
 
 typedef struct s_pts_arr
 {
-	int	rows;
-	int	cols;
-	t_point	***arr;
+	int	r; //rows
+	int	c; //cols
+	int	size;
+	t_point	**arr;
 }				t_pts_arr;
 
 typedef struct s_img
@@ -94,7 +95,7 @@ int				mlx2_destroy_display(void *xvar);
 
 /****************************** POINTS FUNCTIONS ******************************/
 t_point			*new_point(t_point **res, t_point p, t_fdata *data);
-t_point			***alloc_point_arr(t_pts_arr *pts, t_fdata *d);
+t_point			**alloc_point_arr(t_pts_arr *pts, t_fdata *d);
 
 /*********************************** UTILS ************************************/
 int				ft_atoi_forward(const char *nptr, int *i);
