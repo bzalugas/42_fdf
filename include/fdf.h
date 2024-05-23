@@ -6,13 +6,18 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/23 15:53:27 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/23 17:10:56 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 # include "libft/libft.h"
+# define WIDTH 1280
+# define HEIGHT 720
+# define DEFAULT_OFFSET 15
+# define DEFAULT_SCALE 1
+
 
 typedef enum e_event
 {
@@ -59,16 +64,20 @@ typedef struct s_img
 	int		bpp; //bits_per_pixel
 	int		size; //size_line
 	int		end; //endian
+	int		spx; //space between 2 points on x
+	int		spy; //space between 2 points on y
+	float	scale;
+	int		offset;
 }				t_img;
 
 typedef struct s_fdata
 {
-	void	*mlx;
-	void	*win;
-	t_img	img;
+	void		*mlx;
+	void		*win;
+	t_img		img;
 	t_pts_arr	pts;
-	int		fd;
-	t_list	*trash;
+	int			fd;
+	t_list		*trash;
 }				t_fdata;
 
 /************************************ MAIN ************************************/
@@ -83,7 +92,7 @@ void			ft_empty_trash(t_list **trash);
 /********************************* MLX UTILS **********************************/
 int				trgb_to_i(int t, int r, int g, int b);
 int				i_to_trgb(int color, int *r, int *g, int *b);
-void			pixel_put_img(t_img *img, int x, int y, int color);
+void			put_pixel_img(t_img *img, int x, int y, int color);
 int				put_points(t_fdata *d);
 
 /******************************* EVENTS HANDLING ******************************/

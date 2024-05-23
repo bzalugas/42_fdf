@@ -22,8 +22,9 @@ CLOCK: [2024-05-17 Fri 16:55]--[2024-05-17 Fri 17:15] =>  0:20
 CLOCK: [2024-05-17 Fri 12:30]--[2024-05-17 Fri 15:30] =>  3:00
 CLOCK: [2024-05-13 Mon 18:05]--[2024-05-13 Mon 19:37] =>  1:32
 :END:
-**** CODE Draw lines between points
-**** CODING Display points w/out perspective
+**** CODING Draw lines between points
+**** CODED Display points w/out perspective
+CLOSED: [2024-05-23 Thu 17:27]
 :LOGBOOK:
 CLOCK: [2024-05-23 Thu 10:28]--[2024-05-23 Thu 10:53] =>  0:25
 CLOCK: [2024-05-22 Wed 12:40]--[2024-05-22 Wed 14:02] =>  1:22
@@ -32,7 +33,7 @@ CLOCK: [2024-05-22 Wed 12:40]--[2024-05-22 Wed 14:02] =>  1:22
 CLOSED: [2024-05-22 Wed 12:39]
 SCHEDULED: <2024-05-21 Tue>-<2024-05-23 Thu>
 :LOGBOOK:
-CLOCK: [2024-05-23 Thu 15:23]
+CLOCK: [2024-05-23 Thu 15:23]--[2024-05-23 Thu 16:52] =>  1:29
 CLOCK: [2024-05-23 Thu 13:57]--[2024-05-23 Thu 14:09] =>  0:12
 CLOCK: [2024-05-21 Tue 22:40]--[2024-05-21 Tue 23:35] =>  0:55
 CLOCK: [2024-05-21 Tue 20:15]--[2024-05-21 Tue 22:37] =>  2:22
@@ -41,5 +42,6 @@ CLOCK: [2024-05-21 Tue 11:55]--[2024-05-21 Tue 14:07] =>  2:12
 :END:
 *** IN PROGRESS think/test/etc
 :LOGBOOK:
+CLOCK: [2024-05-23 Thu 18:10]--[2024-05-23 Thu 18:36] =>  0:26
 CLOCK: [2024-05-23 Thu 10:53]--[2024-05-23 Thu 11:14] =>  0:21
 :END:

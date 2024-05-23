@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 12:38:39 by bazaluga          #+#    #+#              #
-#    Updated: 2024/05/22 13:09:31 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/05/23 17:06:30 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,9 +22,9 @@ LIBFTDIR    :=	$(INCDIR)/libft
 
 LIBFT	    :=	$(LIBFTDIR)/libft.a
 
-SRC	    :=  end_handling.c events_handling.c ft_atoi_forward.c \
+SRC	    :=  display_utils.c end_handling.c events_handling.c ft_atoi_forward.c \
 		ft_atou_base_forward.c ft_lstnew2.c garbage_collector.c main.c \
-		map_parsing.c mlx_utils.c point_handling.c
+		map_parsing.c point_handling.c
 
 SRCMACOS    :=	mlx_compat_macos.c
 
@@ -51,7 +51,7 @@ OBJ	    :=  $(addprefix $(OBJDIR)/, $(OBJ))
 
 CC	    :=  cc
 
-CFLAGS	    :=  -Wall -Wextra -Werror -MMD -g
+CFLAGS	    :=  -Wall -Wextra -Werror -MMD -MP -g
 
 ########### COLORS ##########
 
@@ -64,9 +64,11 @@ all:		$(NAME)
 $(OBJDIR):
 		mkdir -p $(OBJDIR)
 
-$(OBJDIR)/%.o:	$(SRCDIR)/%.c | $(OBJDIR)
+-include	$(OBJ:.o=.d)
+
+$(OBJDIR)/%.o:	$(SRCDIR)/%.c Makefile | $(OBJDIR)
 		@echo $(GREEN)"COMPILING sources to objects"
-		$(CC) $(CFLAGS) -I$(MLXDIR) -c $< -o $@
+		$(CC) $(CFLAGS) -I$(INCDIR) -I$(MLXDIR) -c $< -o $@
 		@echo $(RESET)
 
 $(MLX):
@@ -81,7 +83,7 @@ $(LIBFT):
 
 $(NAME):	$(OBJ) $(MLX) $(LIBFT)
 		@echo $(GREEN)"LINKING objects to create $(NAME)"
-		$(CC) $(OBJ) -L$(MLXDIR) -lmlx $(INCFLAGS) -o $(NAME)
+		$(CC) $(OBJ) $(CFLAGS) -L$(MLXDIR) -lmlx $(INCFLAGS) -o $(NAME)
 		@printf $(RESET)
 
 clean:
@@ -103,5 +105,3 @@ re:		fclean
 		@make all
 
 .PHONY:		all clean fclean re
-
--include:	$(OBJ:.o=.d)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.c                                        :+:      :+:    :+:   */
+/*   display_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/23 15:48:36 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:36:45 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,36 @@ int	i_to_trgb(int color, int *r, int *g, int *b)
 	return ((color >> 24) & 0xFF);
 }
 
-void	pixel_put_img(t_img *img, int x, int y, int color)
+void	put_pixel_img(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
 	dst = img->addr + (x * (img->bpp / 8) + y * img->size);
 	*(unsigned int *)dst = color;
+}
+
+int	draw_line(t_fdata *d, t_point *p1, t_point *p2)
+{
+	//Do Bresenham
+	return (1);
+}
+
+int	draw_lines(t_fdata *d)
+{
+	t_point	**pts;
+	int		i;
+
+	i = 0;
+	pts = d->pts.arr;
+	while (pts[i])
+	{
+		if (i % d->pts.c != d->pts.c - 1)
+			draw_line(d, pts[i], pts[i + 1]);
+		if (i / d->pts.c != d->pts.r - 1)
+			draw_line(d, pts[i], pts[i + d->pts.c]);
+		i++;
+	}
+	return (1);
 }
 
 int	put_points(t_fdata *d)
@@ -55,7 +79,7 @@ int	put_points(t_fdata *d)
 	pts = &d->pts;
 	if (!d->img.ptr)
 	{
-		d->img.ptr = mlx_new_image(d->mlx, pts->c * pts->c, pts->r * pts->r);
+		d->img.ptr = mlx_new_image(d->mlx, WIDTH, HEIGHT);
 		if (!d->img.ptr)
 			stop_error("Error while creating image", d);
 		d->img.addr = mlx_get_data_addr(d->img.ptr, &d->img.bpp, &d->img.size,
@@ -65,7 +89,7 @@ int	put_points(t_fdata *d)
 	while (pts->arr[i])
 	{
 		color = pts->arr[i]->color;
-		pixel_put_img(&d->img, (i % pts->c) * 10, (i / pts->c) * 10, color);
+		put_pixel_img(&d->img, (i % pts->c) * d->img.spx, (i / pts->c) * d->img.spy, color);
 		i++;
 	}
 	mlx_put_image_to_window(d->mlx, d->win, d->img.ptr, 0, 0);

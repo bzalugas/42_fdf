@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:12:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/23 15:52:11 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/23 16:53:19 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,46 +17,46 @@
 #include "../include/mlx.h"
 #include <errno.h>
 
-void	print_points(t_list *points)
-{
-	t_list	*tmp;
-	t_point	*p;
+/* void	print_points(t_list *points) */
+/* { */
+/* 	t_list	*tmp; */
+/* 	t_point	*p; */
 
-	if (!points)
-		return ;
-	tmp = points;
-	p = (t_point *)tmp->content;
-	while (tmp && tmp->content)
-	{
-		ft_printf("(%d,%d,%d)", p->x, p->y, p->z);
-		tmp = tmp->next;
-		if (tmp)
-		{
-			p = (t_point *)tmp->content;
-			if (p->x == 0)
-				write(1, "\n", 1);
-			else
-				write(1, " ", 1);
-		}
-	}
-	write(1, "\n", 1);
-}
+/* 	if (!points) */
+/* 		return ; */
+/* 	tmp = points; */
+/* 	p = (t_point *)tmp->content; */
+/* 	while (tmp && tmp->content) */
+/* 	{ */
+/* 		ft_printf("(%d,%d,%d)", p->x, p->y, p->z); */
+/* 		tmp = tmp->next; */
+/* 		if (tmp) */
+/* 		{ */
+/* 			p = (t_point *)tmp->content; */
+/* 			if (p->x == 0) */
+/* 				write(1, "\n", 1); */
+/* 			else */
+/* 				write(1, " ", 1); */
+/* 		} */
+/* 	} */
+/* 	write(1, "\n", 1); */
+/* } */
 
-void	print_pts(t_point **pts, int cols)
-{
-	int	i;
+/* void	print_pts(t_point **pts, int cols) */
+/* { */
+/* 	int	i; */
 
-	i = 0;
-	while (pts[i])
-	{
-		ft_printf("%d", pts[i]->h);
-			if (i % cols != cols - 1)
-				write(1, " ", 1);
-			else
-				write(1, "\n", 1);
-		i++;
-	}
-}
+/* 	i = 0; */
+/* 	while (pts[i]) */
+/* 	{ */
+/* 		ft_printf("%d", pts[i]->h); */
+/* 			if (i % cols != cols - 1) */
+/* 				write(1, " ", 1); */
+/* 			else */
+/* 				write(1, "\n", 1); */
+/* 		i++; */
+/* 	} */
+/* } */
 
 static int	check_name(char *s)
 {
@@ -68,17 +68,29 @@ static int	check_name(char *s)
 	return (1);
 }
 
-static void	display(t_fdata *d, t_pts_arr *pts)
+static void	config_img(t_fdata *d)
 {
-	(void)pts;
+	d->img.spx = 10;
+	if (d->pts.c < WIDTH)
+		d->img.spx = WIDTH / d->pts.c;
+	d->img.spy = 10;
+	if (d->pts.r < HEIGHT)
+		d->img.spy = HEIGHT / d->pts.r;
+	d->img.offset = DEFAULT_OFFSET;
+	d->img.scale = DEFAULT_SCALE;
+}
+
+static void	display(t_fdata *d)
+{
 	d->mlx = mlx_init();
 	if (!d->mlx)
 		stop_error("Error at mlx initialization", d);
-	d->win = mlx_new_window(d->mlx, 1680, 900, "FdF");
+	config_img(d);
+	d->win = mlx_new_window(d->mlx, WIDTH, HEIGHT, "FdF");
 	if (!d->win)
 		stop_error("Error at mlx window initialization", d);
-	/* put_points(d); */
-	mlx_loop_hook(d->mlx, &put_points, d);
+	put_points(d);
+	/* mlx_loop_hook(d->mlx, &put_points, d); */
 	mlx_hook(d->win, DESTROY, 0, &handle_close, d);
 	mlx_hook(d->win, KEYDOWN, 1L<<0, &handle_key, d);
 	mlx_loop(d->mlx);
@@ -100,7 +112,7 @@ int	main(int ac, char *av[])
 	close(d.fd);
 	d.fd = -1;
 	d.pts = pts;
-	display(&d, &pts);
+	display(&d);
 	end_fdf(&d, 0);
 	return (0);
 }
