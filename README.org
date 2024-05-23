@@ -22,8 +22,10 @@ CLOCK: [2024-05-17 Fri 16:55]--[2024-05-17 Fri 17:15] =>  0:20
 CLOCK: [2024-05-17 Fri 12:30]--[2024-05-17 Fri 15:30] =>  3:00
 CLOCK: [2024-05-13 Mon 18:05]--[2024-05-13 Mon 19:37] =>  1:32
 :END:
+**** CODE Draw lines between points
 **** CODING Display points w/out perspective
 :LOGBOOK:
+CLOCK: [2024-05-23 Thu 10:28]--[2024-05-23 Thu 10:53] =>  0:25
 CLOCK: [2024-05-22 Wed 12:40]--[2024-05-22 Wed 14:02] =>  1:22
 :END:
 **** CODED Parsing
@@ -36,3 +38,6 @@ CLOCK: [2024-05-21 Tue 15:10]--[2024-05-21 Tue 15:48] =>  0:38
 CLOCK: [2024-05-21 Tue 11:55]--[2024-05-21 Tue 14:07] =>  2:12
 :END:
 *** IN PROGRESS think/test/etc
+:LOGBOOK:
+CLOCK: [2024-05-23 Thu 10:53]--[2024-05-23 Thu 11:14] =>  0:21
+:END:

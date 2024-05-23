@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/22 14:01:28 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/23 10:27:54 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	put_points(t_fdata *d)
 		j = 0;
 		while (pts->arr[i][j])
 		{
-			pixel_put_img(&d->img, i * 10, j * 10, 0xFFFFFFFF);
+			pixel_put_img(&d->img, i * 10, j * 10, pts->arr[i][j]->color);
 			j++;
 		}
 		i++;

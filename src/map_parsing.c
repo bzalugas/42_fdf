@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:55:11 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/22 13:36:22 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:35:46 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ static int	get_color(char *line, t_point *p, int *i)
 	else
 		return (0);
 	if (j == -1 || j > 8)
-		return (0);
+	{
+		color = ft_atou_base_forward(&line[3], "0123456789abcdef", &j);
+		if (j == -1 || j > 8)
+			return (0);
+	}
 	*i += j + 3;
 	p->color = color;
 	return (1);
@@ -52,7 +56,7 @@ static int	get_points_line(char *line, t_list **pts, t_fdata *data, int n)
 	p = NULL;
 	while (line && line[i])
 	{
-		if (!new_point(&p, (t_point){0, x, n, 0, 0}, data))
+		if (!new_point(&p, (t_point){0, x, n, 0, 0xFFFFFF}, data))
 			return (0);
 		if (!get_pos(&line[i], p, &j))
 			return (0);
