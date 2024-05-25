@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 23:08:24 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/21 23:20:35 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/25 23:03:28 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ unsigned int	ft_atou_base_forward(const char *nptr, const char *base, int *i)
 		(*i)++;
 		rank = ft_strchr_rank(base, nptr[*i]);
 	}
-	if (!check || (!ft_isspace(nptr[*i]) && rank == -1))
+	if (!check || (nptr[*i] && !ft_isspace(nptr[*i]) && rank == -1))
 		*i = -1;
 	return (n);
 }

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/23 17:10:56 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/26 00:12:17 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define HEIGHT 720
 # define DEFAULT_OFFSET 15
 # define DEFAULT_SCALE 1
+# define SIZE_ARR 50000
 
 
 typedef enum e_event
@@ -42,6 +43,8 @@ typedef enum e_key_macos
 
 typedef struct s_point
 {
+	int				i;
+	int				j;
 	int				h;
 	int				x;
 	int				y;
@@ -54,7 +57,7 @@ typedef struct s_pts_arr
 	int	r; //rows
 	int	c; //cols
 	int	size;
-	t_point	**arr;
+	t_point	*arr;
 }				t_pts_arr;
 
 typedef struct s_img
@@ -81,12 +84,13 @@ typedef struct s_fdata
 }				t_fdata;
 
 /************************************ MAIN ************************************/
-t_pts_arr		parse_map(t_fdata *data);
+int				parse_map(t_fdata *d);
 
 /************************** GARBAGE COLLECTOR *********************************/
 void			*ft_mylloc(size_t size, t_list **trash);
 void			*ft_cylloc(size_t nmemb, size_t size, t_list **trash);
 void			*ft_add_garbage(t_list **trash, void *ptr);
+void			ft_free_garbage(void *ptr, t_list **trash);
 void			ft_empty_trash(t_list **trash);
 
 /********************************* MLX UTILS **********************************/
@@ -104,7 +108,7 @@ int				mlx2_destroy_display(void *xvar);
 
 /****************************** POINTS FUNCTIONS ******************************/
 t_point			*new_point(t_point **res, t_point p, t_fdata *data);
-t_point			**alloc_point_arr(t_pts_arr *pts, t_fdata *d);
+t_point			*dyn_alloc_point_arr(t_pts_arr *pts, t_fdata *d);
 
 /*********************************** UTILS ************************************/
 int				ft_atoi_forward(const char *nptr, int *i);

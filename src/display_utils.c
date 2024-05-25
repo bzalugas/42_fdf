@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/25 11:48:15 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/26 00:04:52 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,23 +75,28 @@ int	put_points(t_fdata *d)
 	int			i;
 	t_pts_arr	*pts;
 	int			color;
+	int			x;
+	int			y;
 
-	pts = &d->pts;
 	if (!d->img.ptr)
 	{
 		d->img.ptr = mlx_new_image(d->mlx, WIDTH, HEIGHT);
 		if (!d->img.ptr)
 			stop_error("Error while creating image", d);
 		d->img.addr = mlx_get_data_addr(d->img.ptr, &d->img.bpp, &d->img.size,
-						&d->img.end);
+				&d->img.end);
 	}
+	pts = &d->pts;
 	i = 0;
-	while (pts->arr[i])
+	while (i < pts->size)
 	{
-		color = pts->arr[i]->color;
-		put_pixel_img(&d->img, (i % pts->c) * d->img.spx, (i / pts->c) * d->img.spy, color);
+		color = pts->arr[i].color;
+		x = pts->arr[i].i * d->img.spx; //change with x
+		y = pts->arr[i].j * d->img.spy; //change with y
+		if (x < WIDTH && y < HEIGHT)
+			put_pixel_img(&d->img, x, y, color);
 		i++;
 	}
-	mlx_put_image_to_window(d->mlx, d->win, d->img.ptr, 0, 0);
+	mlx_put_image_to_window(d->mlx, d->win, d->img.ptr, d->img.offset, d->img.offset);
 	return (1);
 }

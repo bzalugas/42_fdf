@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:12:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/25 11:48:26 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/25 23:56:54 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,47 +15,6 @@
 #include <fcntl.h>
 #include "../include/mlx.h"
 #include <errno.h>
-
-/* void	print_points(t_list *points) */
-/* { */
-/* 	t_list	*tmp; */
-/* 	t_point	*p; */
-
-/* 	if (!points) */
-/* 		return ; */
-/* 	tmp = points; */
-/* 	p = (t_point *)tmp->content; */
-/* 	while (tmp && tmp->content) */
-/* 	{ */
-/* 		ft_printf("(%d,%d,%d)", p->x, p->y, p->z); */
-/* 		tmp = tmp->next; */
-/* 		if (tmp) */
-/* 		{ */
-/* 			p = (t_point *)tmp->content; */
-/* 			if (p->x == 0) */
-/* 				write(1, "\n", 1); */
-/* 			else */
-/* 				write(1, " ", 1); */
-/* 		} */
-/* 	} */
-/* 	write(1, "\n", 1); */
-/* } */
-
-/* void	print_pts(t_point **pts, int cols) */
-/* { */
-/* 	int	i; */
-
-/* 	i = 0; */
-/* 	while (pts[i]) */
-/* 	{ */
-/* 		ft_printf("%d", pts[i]->h); */
-/* 			if (i % cols != cols - 1) */
-/* 				write(1, " ", 1); */
-/* 			else */
-/* 				write(1, "\n", 1); */
-/* 		i++; */
-/* 	} */
-/* } */
 
 static int	check_name(char *s)
 {
@@ -69,10 +28,10 @@ static int	check_name(char *s)
 
 static void	config_img(t_fdata *d)
 {
-	d->img.spx = 10;
+	d->img.spx = 1;
 	if (d->pts.c < WIDTH)
 		d->img.spx = WIDTH / d->pts.c;
-	d->img.spy = 10;
+	d->img.spy = 1;
 	if (d->pts.r < HEIGHT)
 		d->img.spy = HEIGHT / d->pts.r;
 	d->img.offset = DEFAULT_OFFSET;
@@ -98,7 +57,6 @@ static void	display(t_fdata *d)
 int	main(int ac, char *av[])
 {
 	t_fdata		d;
-	t_pts_arr	pts;
 
 	d = (t_fdata){NULL, NULL, (t_img){0}, (t_pts_arr){0}, -1, NULL};
 	if (ac != 2)
@@ -107,10 +65,9 @@ int	main(int ac, char *av[])
 	d.fd = open(av[1], O_RDONLY);
 	if (d.fd == -1)
 		stop_perror("Error while opening given file name", &d, 0);
-	pts = parse_map(&d);
+	parse_map(&d);
 	close(d.fd);
 	d.fd = -1;
-	d.pts = pts;
 	display(&d);
 	end_fdf(&d, 0);
 	return (0);

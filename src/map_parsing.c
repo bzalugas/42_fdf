@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:55:11 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/23 15:49:01 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/25 23:28:33 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,105 +20,85 @@ static int	get_color(char *line, t_point *p, int *i)
 	if (!ft_strncmp(line, ",0x", 3))
 		color = ft_atou_base_forward(&line[3], "0123456789ABCDEF", &j);
 	else
+	{
 		return (0);
+	}
 	if (j == -1 || j > 8)
 	{
 		color = ft_atou_base_forward(&line[3], "0123456789abcdef", &j);
 		if (j == -1 || j > 8)
+		{
+			ft_printf("ERROR: j = %d for line = <%s>\n", j, &line[3]);
 			return (0);
+			}
 	}
 	*i += j + 3;
 	p->color = color;
 	return (1);
 }
 
-static int	get_pos(char *line, t_point *p, int *j)
-{
-	int	z;
-
-	z = ft_atoi_forward(line, j);
-	if (*j == -1)
-		return (0);
-	p->z = z;
-	p->h = z;
-	return (1);
-}
-
-static int	get_points_line(char *line, t_list **pts, t_fdata *data, int n)
+static int	get_points_line(char *line, t_fdata *data, int y, int start)
 {
 	int		i;
 	int		j;
 	int		x;
-	t_point	*p;
+	t_point	*arr;
 
+	arr = data->pts.arr;
 	i = 0;
 	x = 0;
-	p = NULL;
 	while (line && line[i])
 	{
-		if (!new_point(&p, (t_point){0, x, n, 0, 0xFFFFFF}, data))
-			return (0);
-		if (!get_pos(&line[i], p, &j))
-			return (0);
+		arr[start].h = ft_atoi_forward(&line[i], &j);
+		if (j == -1)
+			stop_error("Error trying to get the z value", data);
+		arr[start].i = x;
+		arr[start].j = y;
+		if (!get_color(&line[i + j], &arr[start], &j))
+			arr[start].color = 0xFFFFFF;
 		i += j;
-		if (line[i] && line[i] == ',' && !get_color(&line[i], p, &i))
-			return (0);
-		if ((line[i] && !ft_isspace(line[i]))
-			|| !ft_lstadd_back(pts, ft_lstnew2(p, &data->trash)))
-			return (0);
+		start++;
+		x++;
 		while (line[i] && ft_isspace(line[i]))
 			i++;
-		x++;
 	}
 	return (x);
 }
 
-static t_list	*get_points(int fd, t_fdata *data, t_pts_arr *pts)
+static int	get_points(t_fdata *data)
 {
-	t_list	*points;
-	char	*line;
-	int		row;
-	int		res;
-	int		prev_ncol;
+	t_pts_arr	*pts;
+	char		*line;
+	int			row;
+	int			res;
+	int			prev_ncol;
 
-	line = get_next_line(fd);
+	pts = &data->pts;
+	line = get_next_line(data->fd);
 	row = 0;
-	points = NULL;
 	prev_ncol = 0;
 	while (line)
 	{
-		res = get_points_line(line, &points, data, row);
+		if ((row + 1) * prev_ncol > pts->size)
+			dyn_alloc_point_arr(pts, data);
+		res = get_points_line(line, data, row, row * prev_ncol);
 		free(line);
 		if (!res || (prev_ncol != 0 && res != prev_ncol))
-			stop_error("Error encountered while parsing the map", data);
+			stop_error("Wrong number of cols or other parsing problem", data);
 		prev_ncol = res;
-		line = get_next_line(fd);
+		line = get_next_line(data->fd);
 		row++;
 	}
 	pts->r = row;
 	pts->c = res;
 	pts->size = row * res;
-	return (points);
+	return (1);
 }
 
-t_pts_arr	parse_map(t_fdata *data)
+int	parse_map(t_fdata *d)
 {
-	t_list		*pts;
-	t_list		*tmp;
-	t_pts_arr	pts_arr;
-	int			i;
-
-	pts_arr = (t_pts_arr){0};
-	pts = get_points(data->fd, data, &pts_arr);
-	pts_arr.arr = alloc_point_arr(&pts_arr, data);
-	tmp = pts;
-	i = 0;
-	while (tmp && i < pts_arr.size)
-	{
-		pts_arr.arr[i] = (t_point *)tmp->content;
-		tmp = tmp->next;
-		i++;
-	}
-	ft_lstclear(&pts, NULL);
-	return (pts_arr);
+	dyn_alloc_point_arr(&d->pts, d);
+	if (!get_points(d))
+		stop_error("Error encountered while parsing the map", d);
+	return (1);
 }
