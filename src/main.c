@@ -6,12 +6,11 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:12:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/23 16:53:19 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/25 11:48:26 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-#include <asm-generic/errno-base.h>
 #include <stdio.h>
 #include <fcntl.h>
 #include "../include/mlx.h"

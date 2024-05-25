@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/23 18:36:45 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/25 11:48:15 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,29 @@ void	put_pixel_img(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	draw_line(t_fdata *d, t_point *p1, t_point *p2)
-{
-	//Do Bresenham
-	return (1);
-}
+/* int	draw_line(t_fdata *d, t_point *p1, t_point *p2) */
+/* { */
+/* 	//Do Bresenham */
+/* 	return (1); */
+/* } */
 
-int	draw_lines(t_fdata *d)
-{
-	t_point	**pts;
-	int		i;
+/* int	draw_lines(t_fdata *d) */
+/* { */
+/* 	t_point	**pts; */
+/* 	int		i; */
 
-	i = 0;
-	pts = d->pts.arr;
-	while (pts[i])
-	{
-		if (i % d->pts.c != d->pts.c - 1)
-			draw_line(d, pts[i], pts[i + 1]);
-		if (i / d->pts.c != d->pts.r - 1)
-			draw_line(d, pts[i], pts[i + d->pts.c]);
-		i++;
-	}
-	return (1);
-}
+/* 	i = 0; */
+/* 	pts = d->pts.arr; */
+/* 	while (pts[i]) */
+/* 	{ */
+/* 		if (i % d->pts.c != d->pts.c - 1) */
+/* 			draw_line(d, pts[i], pts[i + 1]); */
+/* 		if (i / d->pts.c != d->pts.r - 1) */
+/* 			draw_line(d, pts[i], pts[i + d->pts.c]); */
+/* 		i++; */
+/* 	} */
+/* 	return (1); */
+/* } */
 
 int	put_points(t_fdata *d)
 {
