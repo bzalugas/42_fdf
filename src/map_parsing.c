@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:55:11 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/26 12:05:56 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/26 12:39:47 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	get_points_line(char *line, t_fdata *data, int y, int start)
 	return (x);
 }
 
-static int	get_points(t_fdata *data)
+int	parse_map(t_fdata *data)
 {
 	char		*line;
 	int			row;
@@ -74,7 +74,7 @@ static int	get_points(t_fdata *data)
 	prev_ncol = 0;
 	while (line)
 	{
-		if ((row + 1) * prev_ncol > data->pts.size)
+		if (data->pts.size == 0 || (row + 1) * prev_ncol > data->pts.size)
 			dyn_alloc_point_arr(&data->pts, data);
 		res = get_points_line(line, data, row, row * prev_ncol);
 		free(line);
@@ -87,13 +87,5 @@ static int	get_points(t_fdata *data)
 	data->pts.r = row;
 	data->pts.c = res;
 	data->pts.size = row * res;
-	return (1);
-}
-
-int	parse_map(t_fdata *d)
-{
-	dyn_alloc_point_arr(&d->pts, d);
-	if (!get_points(d))
-		stop_error("Error encountered while parsing the map", d);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/26 00:12:17 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/26 12:37:41 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ typedef struct s_fdata
 }				t_fdata;
 
 /************************************ MAIN ************************************/
-int				parse_map(t_fdata *d);
+int				parse_map(t_fdata *data);
 
 /************************** GARBAGE COLLECTOR *********************************/
 void			*ft_mylloc(size_t size, t_list **trash);
