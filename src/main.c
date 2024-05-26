@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:12:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/25 23:56:54 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/26 12:01:02 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	display(t_fdata *d)
 	put_points(d);
 	/* mlx_loop_hook(d->mlx, &put_points, d); */
 	mlx_hook(d->win, DESTROY, 0, &handle_close, d);
-	mlx_hook(d->win, KEYDOWN, 1L<<0, &handle_key, d);
+	mlx_hook(d->win, KEYDOWN, 1L << 0, &handle_key, d);
 	mlx_loop(d->mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:55:11 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/25 23:28:33 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/26 12:05:56 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ static int	get_color(char *line, t_point *p, int *i)
 	{
 		color = ft_atou_base_forward(&line[3], "0123456789abcdef", &j);
 		if (j == -1 || j > 8)
-		{
-			ft_printf("ERROR: j = %d for line = <%s>\n", j, &line[3]);
 			return (0);
-			}
 	}
 	*i += j + 3;
 	p->color = color;
@@ -67,20 +64,18 @@ static int	get_points_line(char *line, t_fdata *data, int y, int start)
 
 static int	get_points(t_fdata *data)
 {
-	t_pts_arr	*pts;
 	char		*line;
 	int			row;
 	int			res;
 	int			prev_ncol;
 
-	pts = &data->pts;
 	line = get_next_line(data->fd);
 	row = 0;
 	prev_ncol = 0;
 	while (line)
 	{
-		if ((row + 1) * prev_ncol > pts->size)
-			dyn_alloc_point_arr(pts, data);
+		if ((row + 1) * prev_ncol > data->pts.size)
+			dyn_alloc_point_arr(&data->pts, data);
 		res = get_points_line(line, data, row, row * prev_ncol);
 		free(line);
 		if (!res || (prev_ncol != 0 && res != prev_ncol))
@@ -89,9 +84,9 @@ static int	get_points(t_fdata *data)
 		line = get_next_line(data->fd);
 		row++;
 	}
-	pts->r = row;
-	pts->c = res;
-	pts->size = row * res;
+	data->pts.r = row;
+	data->pts.c = res;
+	data->pts.size = row * res;
 	return (1);
 }
 
