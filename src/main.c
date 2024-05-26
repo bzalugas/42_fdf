@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:12:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/26 21:44:09 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/26 22:31:56 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ static void	config_img(t_fdata *d)
 {
 	d->img.spx = WIDTH / d->pts.c;
 	d->img.spy = HEIGHT / d->pts.r;
-	if (d->img.spx < DEFAULT_SPACE)
-		d->img.spx = DEFAULT_SPACE;
-	if (d->img.spy < DEFAULT_SPACE)
-		d->img.spy = DEFAULT_SPACE;
+	if (d->img.spx < DEFAULT_SPACEX)
+		d->img.spx = DEFAULT_SPACEX;
+	if (d->img.spy < DEFAULT_SPACEY)
+		d->img.spy = DEFAULT_SPACEY;
 	d->img.offset = DEFAULT_OFFSET;
 	d->img.scale = DEFAULT_SCALE;
 }

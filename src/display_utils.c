@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/26 22:12:13 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/26 22:36:04 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	put_pixel_img(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
+	if (x >= WIDTH || x < 0 || y >= HEIGHT || y < 0)
+		return ;
 	dst = img->addr + (x * (img->bpp / 8) + y * img->size);
 	*(unsigned int *)dst = color;
 }
@@ -174,11 +176,11 @@ int	draw_lines(t_fdata *d)
 	pts = d->pts.arr;
 	while (i < d->pts.size)
 	{
-		if (i % d->pts.c != d->pts.c - 1 && pts[i].visible == true
-			&& pts[i + 1].visible == true)
+		if (i % d->pts.c != d->pts.c - 1
+			&& (pts[i].visible || pts[i + 1].visible))
 			draw_line(d, &pts[i], &pts[i + 1]);
-		if (i / d->pts.c != d->pts.r - 1 && pts[i].visible == true
-			&& pts[i + d->pts.c].visible == true)
+		if (i / d->pts.c != d->pts.r - 1
+			&& (pts[i].visible || pts[i + d->pts.c].visible))
 			draw_line(d, &pts[i], &pts[i + d->pts.c]);
 		i++;
 	}
@@ -206,8 +208,8 @@ int	put_points(t_fdata *d)
 	while (i < pts->size)
 	{
 		color = pts->arr[i].color;
-		x = pts->arr[i].i + pts->arr[i].i * d->img.spx; //change with x
-		y = pts->arr[i].j + pts->arr[i].j * d->img.spy; //change with y
+		x = pts->arr[i].i + pts->arr[i].i * (d->img.spx * d->img.scale); //change with x
+		y = pts->arr[i].j + pts->arr[i].j * (d->img.spy * d->img.scale); //change with y
 		pts->arr[i].visible = true;
 		if (x < WIDTH && y < HEIGHT)
 			put_pixel_img(&d->img, x, y, color);

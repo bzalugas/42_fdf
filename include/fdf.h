@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/26 22:11:57 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/26 22:30:16 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # define HEIGHT 720
 # define DEFAULT_OFFSET 15
 # define DEFAULT_SCALE 1
-# define DEFAULT_SPACE 2
+# define DEFAULT_SPACEX 2
+# define DEFAULT_SPACEY 2
 # define SIZE_ARR 50000
 
 
