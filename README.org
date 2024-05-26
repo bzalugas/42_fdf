@@ -22,7 +22,13 @@ CLOCK: [2024-05-17 Fri 16:55]--[2024-05-17 Fri 17:15] =>  0:20
 CLOCK: [2024-05-17 Fri 12:30]--[2024-05-17 Fri 15:30] =>  3:00
 CLOCK: [2024-05-13 Mon 18:05]--[2024-05-13 Mon 19:37] =>  1:32
 :END:
+**** CODE Put points with rotations
 **** CODING Draw lines between points
+:LOGBOOK:
+CLOCK: [2024-05-26 Sun 19:04]--[2024-05-26 Sun 21:12] =>  2:08
+CLOCK: [2024-05-26 Sun 18:45]--[2024-05-26 Sun 18:56] =>  0:11
+CLOCK: [2024-05-26 Sun 16:53]--[2024-05-26 Sun 17:10] =>  0:17
+:END:
 **** CODED Display points w/out perspective
 CLOSED: [2024-05-23 Thu 17:27]
 :LOGBOOK:
@@ -45,7 +51,7 @@ CLOCK: [2024-05-21 Tue 11:55]--[2024-05-21 Tue 14:07] =>  2:12
 :END:
 *** IN PROGRESS think/test/etc
 :LOGBOOK:
-CLOCK: [2024-05-26 Sun 11:58]
+CLOCK: [2024-05-26 Sun 11:58]--[2024-05-26 Sun 13:27] =>  1:29
 CLOCK: [2024-05-25 Sat 09:00]--[2024-05-25 Sat 11:00] =>  2:00
 CLOCK: [2024-05-23 Thu 18:10]--[2024-05-23 Thu 18:36] =>  0:26
 CLOCK: [2024-05-23 Thu 10:53]--[2024-05-23 Thu 11:14] =>  0:21

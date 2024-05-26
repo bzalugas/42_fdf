@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/26 12:37:41 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/26 22:11:57 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define HEIGHT 720
 # define DEFAULT_OFFSET 15
 # define DEFAULT_SCALE 1
+# define DEFAULT_SPACE 2
 # define SIZE_ARR 50000
 
 
@@ -38,7 +39,9 @@ typedef enum e_key_linux
 
 typedef enum e_key_macos
 {
-	ESCM = 53
+	ESCM = 53,
+	KEYM_I = 34,
+	KEYM_O = 31
 }			t_key_macos;
 
 typedef struct s_point
@@ -50,6 +53,7 @@ typedef struct s_point
 	int				y;
 	int				z;
 	unsigned int	color;
+	bool			visible;
 }				t_point;
 
 typedef struct s_pts_arr
@@ -117,5 +121,6 @@ t_list			*ft_lstnew2(void *content, t_list **trash);
 int				end_fdf(t_fdata *data, int exit_code);
 int				stop_perror(char *msg, t_fdata *data, int error);
 int				stop_error(char *msg, t_fdata *data);
+int				ft_sign(int n);
 
 #endif

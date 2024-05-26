@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:12:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/26 12:01:02 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/26 21:44:09 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ static int	check_name(char *s)
 
 static void	config_img(t_fdata *d)
 {
-	d->img.spx = 1;
-	if (d->pts.c < WIDTH)
-		d->img.spx = WIDTH / d->pts.c;
-	d->img.spy = 1;
-	if (d->pts.r < HEIGHT)
-		d->img.spy = HEIGHT / d->pts.r;
+	d->img.spx = WIDTH / d->pts.c;
+	d->img.spy = HEIGHT / d->pts.r;
+	if (d->img.spx < DEFAULT_SPACE)
+		d->img.spx = DEFAULT_SPACE;
+	if (d->img.spy < DEFAULT_SPACE)
+		d->img.spy = DEFAULT_SPACE;
 	d->img.offset = DEFAULT_OFFSET;
 	d->img.scale = DEFAULT_SCALE;
 }
-
+int	refresh_display(t_fdata *d);
 static void	display(t_fdata *d)
 {
 	d->mlx = mlx_init();
@@ -47,8 +47,8 @@ static void	display(t_fdata *d)
 	d->win = mlx_new_window(d->mlx, WIDTH, HEIGHT, "FdF");
 	if (!d->win)
 		stop_error("Error at mlx window initialization", d);
-	put_points(d);
-	/* mlx_loop_hook(d->mlx, &put_points, d); */
+	/* put_points(d); */
+	mlx_loop_hook(d->mlx, &refresh_display, d);
 	mlx_hook(d->win, DESTROY, 0, &handle_close, d);
 	mlx_hook(d->win, KEYDOWN, 1L << 0, &handle_key, d);
 	mlx_loop(d->mlx);
