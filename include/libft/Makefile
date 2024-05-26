@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 16:22:14 by bazaluga          #+#    #+#              #
-#    Updated: 2024/02/23 20:34:53 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/05/26 19:10:20 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -26,7 +26,8 @@ SRC		:=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
 			ft_lstmap.c \
 			\
-			ft_isspace.c ft_strndup.c ft_atol.c ft_utohex.c\
+			ft_isspace.c ft_strndup.c ft_atol.c ft_utohex.c ft_max.c \
+			ft_max_arr.c ft_min.c ft_min_arr.c ft_abs.c ft_lstremove.c \
 			\
 			ft_printf.c ft_printf_buffer.c ft_printf_buffer2.c \
 			ft_printf_char_str_handlers.c ft_printf_convert_buffer.c \

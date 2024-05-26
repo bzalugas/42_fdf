@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:48:20 by bazaluga          #+#    #+#             */
-/*   Updated: 2023/11/26 00:59:26 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:54:22 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*end;
 	size_t	len;
 
-	if (!s1 || !set)
+	if (!s1)
 		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
 	start = (char *)s1;
 	while (*start && ft_strchr(set, *start))
 		start++;
