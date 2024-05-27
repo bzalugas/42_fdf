@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 12:38:39 by bazaluga          #+#    #+#              #
-#    Updated: 2024/05/26 19:34:54 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/05/27 17:05:34 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,9 +22,10 @@ LIBFTDIR    :=	$(INCDIR)/libft
 
 LIBFT	    :=	$(LIBFTDIR)/libft.a
 
-SRC	    :=  display_utils.c end_handling.c events_handling.c ft_atoi_forward.c \
-		ft_atou_base_forward.c ft_lstnew2.c ft_sign.c garbage_collector.c \
-		main.c map_parsing.c point_handling.c
+SRC	    :=  colors_utils.c display_utils.c end_handling.c events_handling.c \
+		ft_atoi_forward.c ft_atou_base_forward.c ft_lstnew2.c ft_sign.c \
+		garbage_collector.c line_drawing.c main.c map_parsing.c \
+		point_handling.c
 
 SRCMACOS    :=	mlx_compat_macos.c
 
@@ -32,12 +33,12 @@ SRCLINUX    :=	mlx_compat_linux.c
 
 ifeq ($(shell uname), Linux)
 	MLXDIR	    :=	$(INCDIR)/mlx_linux
-	INCFLAGS    :=	-L$(LIBFTDIR) -lft -lXext -lX11
+	INCFLAGS    :=	-L$(LIBFTDIR) -lft -lXext -lX11 -lm
 	SRC	    :=	$(SRC) $(SRCLINUX)
 
 else
 	MLXDIR	    :=	$(INCDIR)/mlx_macos
-	INCFLAGS    :=	-L$(LIBFTDIR) -lft -framework OpenGL -framework AppKit
+	INCFLAGS    :=	-L$(LIBFTDIR) -lft -framework OpenGL -framework AppKit -lm
 	SRC	    :=	$(SRC) $(SRCMACOS)
 endif
 

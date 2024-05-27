@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:01:15 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/26 22:37:30 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/27 18:00:52 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,13 @@ static int	get_keycode(int keycode)
 static int	zoom_in(t_fdata *d)
 {
 	d->img.scale += 0.5;
-
 	return (1);
 }
 
 static int	zoom_out(t_fdata *d)
 {
-	int	spx;
-	int	spy;
-
 	d->img.scale -= 0.5;
-	spx = d->img.spx * d->img.scale;
-	spy = d->img.spy * d->img.scale;
-	if (spx < 0 || spy < 0)
+	if (d->img.spx * d->img.scale < 0 || d->img.spy * d->img.scale < 0)
 		d->img.scale += 0.5;
 	return (1);
 }
@@ -48,9 +42,9 @@ int	handle_key(int keycode, t_fdata *data)
 {
 	if (keycode == ESC || keycode == ESCM)
 		return (handle_close(data));
-	else if (keycode == KEYM_I)
+	else if (keycode == KEY_I || keycode == KEYM_I)
 		return (zoom_in(data));
-	else if (keycode == KEYM_O)
+	else if (keycode == KEY_O || keycode == KEYM_O)
 		return (zoom_out(data));
 	else
 		return (get_keycode(keycode));

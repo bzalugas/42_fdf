@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/26 22:30:16 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/27 18:02:24 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ typedef enum e_event
 
 typedef enum e_key_linux
 {
-	ESC = 65307
+	ESC = 65307,
+	KEY_I = 105,
+	KEY_O = 111
 }			t_key_linux;
 
 typedef enum e_key_macos
@@ -98,11 +100,14 @@ void			*ft_add_garbage(t_list **trash, void *ptr);
 void			ft_free_garbage(void *ptr, t_list **trash);
 void			ft_empty_trash(t_list **trash);
 
-/********************************* MLX UTILS **********************************/
+/********************************** DISPLAY ***********************************/
 int				trgb_to_i(int t, int r, int g, int b);
 int				i_to_trgb(int color, int *r, int *g, int *b);
 void			put_pixel_img(t_img *img, int x, int y, int color);
 int				put_points(t_fdata *d);
+int				draw_lines(t_fdata *d);
+int				gradient(int c0, int c1, float distance, int ipixel);
+int				refresh_display(t_fdata *d);
 
 /******************************* EVENTS HANDLING ******************************/
 int				handle_close(t_fdata *data);

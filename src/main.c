@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:12:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/26 22:31:56 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/27 18:02:04 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	config_img(t_fdata *d)
 	d->img.offset = DEFAULT_OFFSET;
 	d->img.scale = DEFAULT_SCALE;
 }
-int	refresh_display(t_fdata *d);
+
 static void	display(t_fdata *d)
 {
 	d->mlx = mlx_init();
