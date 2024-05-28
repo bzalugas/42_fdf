@@ -6,13 +6,14 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/27 17:59:55 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/28 21:55:33 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 #include "../include/mlx.h"
 #include "../include/libft/libft.h"
+#include <math.h>
 
 void	put_pixel_img(t_img *img, int x, int y, int color)
 {
@@ -46,8 +47,8 @@ int	put_points(t_fdata *d)
 	while (i < d->pts.size)
 	{
 		color = arr[i].color;
-		arr[i].x = arr[i].i + arr[i].i * (d->img.spx * d->img.scale);
-		arr[i].y = arr[i].j + arr[i].j * (d->img.spy * d->img.scale);
+		arr[i].x = arr[i].i + arr[i].i * d->img.sp;
+		arr[i].y = arr[i].j + arr[i].j * d->img.sp;
 		arr[i].visible = true;
 		if (arr[i].x < WIDTH && arr[i].y < HEIGHT)
 			put_pixel_img(&d->img, arr[i].x, arr[i].y, color);
@@ -66,10 +67,6 @@ int	refresh_display(t_fdata *d)
 	//Optimization: instead of creating a black image then putting points,
 	//fill all the image that doesn't have a point with black at each put_points
 	if (d->img.ptr)
-	{
 		ft_bzero(d->img.addr, d->img.size * HEIGHT);
-		mlx_put_image_to_window(d->mlx, d->win, d->img.ptr, d->img.offset,
-			d->img.offset);
-	}
 	return (put_points(d));
 }

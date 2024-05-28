@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:32:08 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/27 18:04:43 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/28 20:14:13 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ int	gradient(int c0, int c1, float distance, int ipixel)
 
 	if (c0 == c1)
 		return (c0);
-	value = (float)((1 / distance) * ipixel);
+	value = (float)((1 / distance) * (float)ipixel);
 	i_to_trgb(c0, &p0cols[0], &p0cols[1], &p0cols[2]);
 	i_to_trgb(c1, &p1cols[0], &p1cols[1], &p1cols[2]);
-	res[0] = p0cols[0] + round((double)((p1cols[0] - p0cols[0]) * value));
-	res[1] = p0cols[1] + round((double)((p1cols[1] - p0cols[1]) * value));
-	res[2] = p0cols[2] + round((double)((p1cols[2] - p0cols[2]) * value));
+	res[0] = p0cols[0] + round((p1cols[0] - p0cols[0]) * value);
+	res[1] = p0cols[1] + round((p1cols[1] - p0cols[1]) * value);
+	res[2] = p0cols[2] + round((p1cols[2] - p0cols[2]) * value);
 	return (trgb_to_i(0, res[0], res[1], res[2]));
 }
 

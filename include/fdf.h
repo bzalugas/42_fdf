@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/27 18:02:24 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/28 21:48:51 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 # define WIDTH 1280
 # define HEIGHT 720
 # define DEFAULT_OFFSET 15
-# define DEFAULT_SCALE 1
-# define DEFAULT_SPACEX 2
-# define DEFAULT_SPACEY 2
-# define SIZE_ARR 50000
+# define DEFAULT_SPACE 2
+# define SIZE_ARR 1000000
 
 
 typedef enum e_event
@@ -74,9 +72,7 @@ typedef struct s_img
 	int		bpp; //bits_per_pixel
 	int		size; //size_line
 	int		end; //endian
-	int		spx; //space between 2 points on x
-	int		spy; //space between 2 points on y
-	float	scale;
+	int		sp; //space between points
 	int		offset;
 }				t_img;
 
