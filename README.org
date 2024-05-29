@@ -24,7 +24,11 @@ CLOCK: [2024-05-17 Fri 12:30]--[2024-05-17 Fri 15:30] =>  3:00
 CLOCK: [2024-05-13 Mon 18:05]--[2024-05-13 Mon 19:37] =>  1:32
 :END:
 **** CODE Real zoom
+:LOGBOOK:
+CLOCK: [2024-05-29 Wed 10:52]--[2024-05-29 Wed 11:57] =>  1:05
+:END:
 + normalize coordinate system so display begins with center of the map
+  :LOGBOOK:
 **** CODE Put points with rotations
 **** CODING Convert coords from (0,0) up left to (0,0) at center (for zoom)
 :LOGBOOK:

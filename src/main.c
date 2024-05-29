@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:12:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/28 22:02:56 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/29 11:37:44 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static int	check_name(char *s)
 static void	config_img(t_fdata *d)
 {
 	d->img.offset = DEFAULT_OFFSET;
-	d->img.sp = ft_min((WIDTH + d->img.offset) / d->pts.c, (HEIGHT + d->img.offset) / d->pts.r);
-	//Points not exactly fitting in window
+	d->img.sp = ft_min((WIDTH - d->img.offset) / (d->pts.c + 1),
+			(HEIGHT - d->img.offset) / (d->pts.r + 1));
 	if (d->img.sp < DEFAULT_SPACE)
 		d->img.sp = DEFAULT_SPACE;
 }
@@ -41,10 +41,11 @@ static void	display(t_fdata *d)
 	if (!d->mlx)
 		stop_error("Error at mlx initialization", d);
 	config_img(d);
-	d->win = mlx_new_window(d->mlx, WIDTH, HEIGHT, "FdF");
+	d->win = mlx_new_window(d->mlx, WIDTH + d->img.offset,
+			HEIGHT + d->img.offset, "FdF");
 	if (!d->win)
 		stop_error("Error at mlx window initialization", d);
-	put_points(d);
+	/* put_points(d); */
 	mlx_loop_hook(d->mlx, &refresh_display, d);
 	mlx_hook(d->win, DESTROY, 0, &handle_close, d);
 	mlx_hook(d->win, KEYDOWN, 1L << 0, &handle_key, d);

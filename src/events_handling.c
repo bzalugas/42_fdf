@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:01:15 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/28 21:50:16 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/29 10:54:30 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static int	zoom_in(t_fdata *d)
 
 static int	zoom_out(t_fdata *d)
 {
-	if (d->img.sp - 1 >= 0)
-		d->img.sp--;
 	if (d->img.sp - 1 >= 0)
 		d->img.sp--;
 	/* refresh_display(d); */

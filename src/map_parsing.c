@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:55:11 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/28 19:11:03 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/29 11:37:52 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,5 @@ int	parse_map(t_fdata *data)
 	data->pts.r = row;
 	data->pts.c = res;
 	data->pts.size = row * res;
-	ft_printf("%d rows, %d cols\n", row, res);
 	return (1);
 }
