@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/28 21:48:51 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:36:50 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "libft/libft.h"
 # define WIDTH 1280
 # define HEIGHT 720
-# define DEFAULT_OFFSET 15
+# define DEFAULT_OFFSET 0
 # define DEFAULT_SPACE 2
 # define SIZE_ARR 1000000
 
@@ -72,6 +72,7 @@ typedef struct s_img
 	int		bpp; //bits_per_pixel
 	int		size; //size_line
 	int		end; //endian
+	int		old_sp;
 	int		sp; //space between points
 	int		offset;
 }				t_img;
@@ -97,13 +98,19 @@ void			ft_free_garbage(void *ptr, t_list **trash);
 void			ft_empty_trash(t_list **trash);
 
 /********************************** DISPLAY ***********************************/
+void			display(t_fdata *d);
+int				refresh_display(t_fdata *d);
+/* int				put_points(t_fdata *d); */
+int				draw_lines(t_fdata *d);
+/*////////////////////////////////// COLORS //////////////////////////////////*/
 int				trgb_to_i(int t, int r, int g, int b);
 int				i_to_trgb(int color, int *r, int *g, int *b);
-void			put_pixel_img(t_img *img, int x, int y, int color);
-int				put_points(t_fdata *d);
-int				draw_lines(t_fdata *d);
 int				gradient(int c0, int c1, float distance, int ipixel);
-int				refresh_display(t_fdata *d);
+/*////////////////////////////////// UTILS ///////////////////////////////////*/
+void			put_pixel_img(t_img *img, int x, int y, int color);
+void			config_img(t_fdata *d);
+void			create_image(t_fdata *d);
+void			normalize_coords(t_fdata *d, t_point *origin);
 
 /******************************* EVENTS HANDLING ******************************/
 int				handle_close(t_fdata *data);

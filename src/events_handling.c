@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:01:15 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/29 10:54:30 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:36:29 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@ static int	get_keycode(int keycode)
 static int	zoom_in(t_fdata *d)
 {
 	d->img.sp++;
-	/* refresh_display(d); */
 	return (1);
 }
 
 static int	zoom_out(t_fdata *d)
 {
-	if (d->img.sp - 1 >= 0)
+	if (d->img.sp - 1 > 0)
 		d->img.sp--;
-	/* refresh_display(d); */
 	return (1);
 }
 

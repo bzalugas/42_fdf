@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/28 21:55:33 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:46:00 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,24 @@ void	put_pixel_img(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-static void	create_image(t_fdata *d)
+void	normalize_coords(t_fdata *d, t_point *origin)
+{
+	int		i;
+	t_point	mid;
+
+	if (!origin)
+		mid = d->pts.arr[(d->pts.r / 2) * d->pts.c + (d->pts.c / 2)];
+	else
+		mid = *origin;
+	i = -1;
+	while (++i < d->pts.size)
+	{
+		d->pts.arr[i].i = d->pts.arr[i].i - mid.i;
+		d->pts.arr[i].j = d->pts.arr[i].j - mid.j;
+	}
+}
+
+void	create_image(t_fdata *d)
 {
 	d->img.ptr = mlx_new_image(d->mlx, WIDTH, HEIGHT);
 	if (!d->img.ptr)
@@ -34,39 +51,13 @@ static void	create_image(t_fdata *d)
 			&d->img.end);
 }
 
-int	put_points(t_fdata *d)
+void	config_img(t_fdata *d)
 {
-	int			i;
-	t_point		*arr;
-	int			color;
-
-	if (!d->img.ptr)
-		create_image(d);
-	arr = d->pts.arr;
-	i = 0;
-	while (i < d->pts.size)
-	{
-		color = arr[i].color;
-		arr[i].x = arr[i].i + arr[i].i * d->img.sp;
-		arr[i].y = arr[i].j + arr[i].j * d->img.sp;
-		arr[i].visible = true;
-		if (arr[i].x < WIDTH && arr[i].y < HEIGHT)
-			put_pixel_img(&d->img, arr[i].x, arr[i].y, color);
-		else
-			arr[i].visible = false;
-		i++;
-	}
-	draw_lines(d);
-	mlx_put_image_to_window(d->mlx, d->win, d->img.ptr, d->img.offset,
-		d->img.offset);
-	return (1);
-}
-
-int	refresh_display(t_fdata *d)
-{
-	//Optimization: instead of creating a black image then putting points,
-	//fill all the image that doesn't have a point with black at each put_points
-	if (d->img.ptr)
-		ft_bzero(d->img.addr, d->img.size * HEIGHT);
-	return (put_points(d));
+	d->img.offset = DEFAULT_OFFSET;
+	d->img.sp = ft_min((WIDTH - d->img.offset) / (d->pts.c + 1),
+			(HEIGHT - d->img.offset) / (d->pts.r + 1));
+	if (d->img.sp < DEFAULT_SPACE)
+		d->img.sp = DEFAULT_SPACE;
+	d->img.old_sp = d->img.sp;
+	ft_printf("sp = %d\n", d->img.sp);
 }
