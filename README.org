@@ -30,7 +30,8 @@ CLOCK: [2024-05-29 Wed 10:52]--[2024-05-29 Wed 11:57] =>  1:05
 + normalize coordinate system so display begins with center of the map
   :LOGBOOK:
 **** CODE Put points with rotations
-**** CODING Convert coords from (0,0) up left to (0,0) at center (for zoom)
+**** CODED Convert coords from (0,0) up left to (0,0) at center (for zoom)
+CLOSED: [2024-05-30 Thu 11:12]
 :LOGBOOK:
 CLOCK: [2024-05-29 Wed 14:15]--[2024-05-29 Wed 15:01] =>  0:46
 CLOCK: [2024-05-29 Wed 13:04]--[2024-05-29 Wed 13:57] =>  0:53
@@ -73,8 +74,9 @@ CLOCK: [2024-05-21 Tue 20:15]--[2024-05-21 Tue 22:37] =>  2:22
 CLOCK: [2024-05-21 Tue 15:10]--[2024-05-21 Tue 15:48] =>  0:38
 CLOCK: [2024-05-21 Tue 11:55]--[2024-05-21 Tue 14:07] =>  2:12
 :END:
-*** IN PROGRESS think/test/etc
+*** IN PROGRESS think/test/debug/etc
 :LOGBOOK:
+CLOCK: [2024-05-30 Thu 11:12]--[2024-05-30 Thu 11:26] =>  0:14
 CLOCK: [2024-05-27 Mon 11:40]--[2024-05-27 Mon 12:13] =>  0:33
 CLOCK: [2024-05-26 Sun 11:58]--[2024-05-26 Sun 13:27] =>  1:29
 CLOCK: [2024-05-25 Sat 09:00]--[2024-05-25 Sat 11:00] =>  2:00

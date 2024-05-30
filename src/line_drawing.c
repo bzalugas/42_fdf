@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:17:48 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/29 15:01:18 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/30 11:25:45 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,10 @@ static void	line_straight(t_fdata *d, t_point *p0, t_point *p1, int deltas[2])
 	}
 }
 
-static int	draw_line(t_fdata *d, t_point *p0, t_point *p1, int n)
+static int	draw_line(t_fdata *d, t_point *p0, t_point *p1)
 {
 	int	deltas[2];
 
-	ft_printf("%d line\n", n);
 	deltas[0] = p1->x - p0->x;
 	deltas[1] = p1->y - p0->y;
 	if (deltas[0] == 0 || deltas[1] == 0)
@@ -121,22 +120,18 @@ int	draw_lines(t_fdata *d)
 {
 	t_point	*pts;
 	int		i;
-	int n = 0;
 
-	write(1, "draw_lines\n", 11);
 	i = 0;
 	pts = d->pts.arr;
 	while (i < d->pts.size)
 	{
-		//Here i think to many lines are tried to draw
 		if (i % d->pts.c != d->pts.c - 1
 			&& (pts[i].visible || pts[i + 1].visible))
-			draw_line(d, &pts[i], &pts[i + 1], ++n);
+			draw_line(d, &pts[i], &pts[i + 1]);
 		if (i / d->pts.c != d->pts.r - 1
 			&& (pts[i].visible || pts[i + d->pts.c].visible))
-			draw_line(d, &pts[i], &pts[i + d->pts.c], ++n);
+			draw_line(d, &pts[i], &pts[i + d->pts.c]);
 		i++;
 	}
-	write(1, "end draw_lines\n", 15);
 	return (1);
 }

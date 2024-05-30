@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:11:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/29 14:49:13 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/30 11:24:04 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static int	put_points(t_fdata *d)
 	int			i;
 	t_point		*arr;
 
-	write(1, "put_points\n", 11);
 	if (!d->img.ptr)
 		create_image(d);
 	arr = d->pts.arr;
@@ -28,7 +27,8 @@ static int	put_points(t_fdata *d)
 		arr[i].x = (WIDTH/2) + (arr[i].i * d->img.sp);
 		arr[i].y = (HEIGHT/2) + (arr[i].j * d->img.sp);
 		arr[i].visible = true;
-		if (arr[i].x < WIDTH && arr[i].y < HEIGHT)
+		if (arr[i].x < WIDTH && arr[i].x >= 0
+			&& arr[i].y < HEIGHT && arr[i].y >= 0)
 			put_pixel_img(&d->img, arr[i].x, arr[i].y, arr[i].color);
 		else
 			arr[i].visible = false;
