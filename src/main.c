@@ -6,14 +6,12 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:12:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/29 14:52:37 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:07:37 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-#include <stdio.h>
 #include <fcntl.h>
-#include "../include/mlx.h"
 #include <errno.h>
 
 static int	check_name(char *s)

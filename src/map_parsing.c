@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:55:11 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/29 13:47:51 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/31 19:01:04 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static int	get_points_line(char *line, t_fdata *data, int y, int start)
 			stop_error("Error trying to get the z value", data);
 		arr[start].i = x;
 		arr[start].j = y;
+		arr[start].z = arr[start].h;
 		if (!get_color(&line[i + j], &arr[start], &j))
 			arr[start].color = 0xFFFFFF;
 		i += j;
@@ -87,7 +88,7 @@ int	parse_map(t_fdata *data)
 	data->pts.r = row;
 	data->pts.c = res;
 	data->pts.size = row * res;
-	normalize_coords(data, NULL);
+	/* normalize_coords(data, NULL); */
 	ft_printf("%d rows %d cols\n", row ,res);
 	return (1);
 }

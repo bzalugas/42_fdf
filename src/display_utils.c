@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/29 14:46:00 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/31 16:04:29 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,11 @@ void	create_image(t_fdata *d)
 void	config_img(t_fdata *d)
 {
 	d->img.offset = DEFAULT_OFFSET;
-	d->img.sp = ft_min((WIDTH - d->img.offset) / (d->pts.c + 1),
-			(HEIGHT - d->img.offset) / (d->pts.r + 1));
-	if (d->img.sp < DEFAULT_SPACE)
-		d->img.sp = DEFAULT_SPACE;
+	d->img.sp = 10;
+	/* d->img.sp = ft_min((WIDTH - d->img.offset) / (d->pts.c + 1), */
+	/* 		(HEIGHT - d->img.offset) / (d->pts.r + 1)); */
+	/* if (d->img.sp < DEFAULT_SPACE) */
+	/* 	d->img.sp = DEFAULT_SPACE; */
 	d->img.old_sp = d->img.sp;
 	ft_printf("sp = %d\n", d->img.sp);
 }

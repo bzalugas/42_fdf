@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/29 14:36:50 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:57:23 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # define DEFAULT_OFFSET 0
 # define DEFAULT_SPACE 2
 # define SIZE_ARR 1000000
+# define DEFAULT_DEG_X 35.264
+# define DEFAULT_DEG_Y 45
+# define ANGLE_X 0.615
+# define ANGLE_Y M_PI_4
 
 
 typedef enum e_event
@@ -106,6 +110,10 @@ int				draw_lines(t_fdata *d);
 int				trgb_to_i(int t, int r, int g, int b);
 int				i_to_trgb(int color, int *r, int *g, int *b);
 int				gradient(int c0, int c1, float distance, int ipixel);
+/*//////////////////////////////// ROTATIONS /////////////////////////////////*/
+void			rotate_x(t_point *p, float angle);
+void			rotate_y(t_point *p, float angle);
+void			rotate_z(t_point *p, float angle);
 /*////////////////////////////////// UTILS ///////////////////////////////////*/
 void			put_pixel_img(t_img *img, int x, int y, int color);
 void			config_img(t_fdata *d);
@@ -131,5 +139,6 @@ int				end_fdf(t_fdata *data, int exit_code);
 int				stop_perror(char *msg, t_fdata *data, int error);
 int				stop_error(char *msg, t_fdata *data);
 int				ft_sign(int n);
+float			ft_rad(float angle);
 
 #endif
