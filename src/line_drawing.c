@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:17:48 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/30 11:25:45 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/05/31 16:38:40 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,15 +104,18 @@ static void	line_straight(t_fdata *d, t_point *p0, t_point *p1, int deltas[2])
 static int	draw_line(t_fdata *d, t_point *p0, t_point *p1)
 {
 	int	deltas[2];
+	int	d_abs[2];
 
 	deltas[0] = p1->x - p0->x;
 	deltas[1] = p1->y - p0->y;
-	if (deltas[0] == 0 || deltas[1] == 0)
+	d_abs[0] = abs(deltas[0]);
+	d_abs[1] = abs(deltas[1]);
+	if (d_abs[0] == 0 || d_abs[1] == 0)
 		line_straight(d, p0, p1, deltas);
-	if (deltas[0] >= deltas[1])
-		line_high(d, p0, p1, deltas);
-	else
+	else if (d_abs[0] >= d_abs[1])
 		line_low(d, p0, p1, deltas);
+	else
+		line_high(d, p0, p1, deltas);
 	return (1);
 }
 
