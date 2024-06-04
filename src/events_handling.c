@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:01:15 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/04 19:55:48 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/04 22:01:22 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ static int	zoom_out(t_fdata *d)
 
 static int	rotate(t_fdata *d, int key)
 {
-	if (key == KEY_Q)
+	if (key == KEY_Q || key == KEYM_Q)
 		d->img.rz++;
-	else if (key == KEY_E)
+	else if (key == KEY_E || key == KEYM_E)
 		d->img.rz--;
-	else if (key == KEY_W)
+	else if (key == KEY_W || key == KEYM_W)
 		d->img.rx++;
-	else if (key == KEY_S)
+	else if (key == KEY_S || key == KEYM_S)
 		d->img.rx--;
-	else if (key == KEY_D)
+	else if (key == KEY_D || key == KEYM_D)
 		d->img.ry++;
-	else if (key == KEY_A)
+	else if (key == KEY_A || key == KEYM_A)
 		d->img.ry--;
 	rotate_img(d, AXIS_Y, true);
 	rotate_img(d, AXIS_Z, false);
@@ -75,7 +75,8 @@ int	handle_key(int key, t_fdata *data)
 	else if (key == KEY_O || key == KEYM_O)
 		return (zoom_out(data));
 	else if (key == KEY_Q || key == KEY_E || key == KEY_W || key == KEY_S
-		|| key == KEY_A || key == KEY_D)
+			|| key == KEY_A || key == KEY_D || key == KEYM_Q || key == KEYM_E
+			|| key == KEYM_W || key == KEYM_S || key == KEYM_A || key == KEYM_D)
 		return (rotate(data, key));
 	else
 		return (get_keycode(key));

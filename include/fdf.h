@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/04 19:51:01 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/04 21:58:56 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,13 @@ typedef enum e_key_macos
 {
 	ESCM = 53,
 	KEYM_I = 34,
-	KEYM_O = 31
+	KEYM_O = 31,
+	KEYM_W = 13,
+	KEYM_A = 0,
+	KEYM_S = 1,
+	KEYM_D = 2,
+	KEYM_Q = 12,
+	KEYM_E = 14
 }			t_key_macos;
 
 typedef struct s_point
