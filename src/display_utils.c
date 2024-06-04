@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/31 16:04:29 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/04 19:56:37 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,16 @@ void	create_image(t_fdata *d)
 void	config_img(t_fdata *d)
 {
 	d->img.offset = DEFAULT_OFFSET;
-	d->img.sp = 10;
-	/* d->img.sp = ft_min((WIDTH - d->img.offset) / (d->pts.c + 1), */
-	/* 		(HEIGHT - d->img.offset) / (d->pts.r + 1)); */
-	/* if (d->img.sp < DEFAULT_SPACE) */
-	/* 	d->img.sp = DEFAULT_SPACE; */
-	d->img.old_sp = d->img.sp;
+	d->img.center[0] = WIDTH / 2;
+	d->img.center[1] = HEIGHT / 2;
+	d->img.sp = ft_min((WIDTH - d->img.offset) / (d->pts.c + 1),
+			(HEIGHT - d->img.offset) / (d->pts.r + 1));
+	if (d->img.sp < DEFAULT_SPACE)
+		d->img.sp = DEFAULT_SPACE;
+	d->img.rx = DEFAULT_DEG_X;
+	d->img.ry = 0;
+	d->img.rz = DEFAULT_DEG_Z;
+	rotate_img(d, AXIS_Z, true);
+	rotate_img(d, AXIS_X, false);
 	ft_printf("sp = %d\n", d->img.sp);
 }

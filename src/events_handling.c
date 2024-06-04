@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:01:15 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/31 18:59:39 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/04 19:55:48 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ static int	get_keycode(int keycode)
 static int	zoom_in(t_fdata *d)
 {
 	d->img.sp++;
+	rotate_img(d, AXIS_Y, true);
+	rotate_img(d, AXIS_Z, false);
+	rotate_img(d, AXIS_X, false);
+	d->img.refresh = true;
 	return (1);
 }
 
@@ -34,18 +38,46 @@ static int	zoom_out(t_fdata *d)
 {
 	if (d->img.sp - 1 > 0)
 		d->img.sp--;
+	rotate_img(d, AXIS_Y, true);
+	rotate_img(d, AXIS_Z, false);
+	rotate_img(d, AXIS_X, false);
+	d->img.refresh = true;
 	return (1);
 }
 
-int	handle_key(int keycode, t_fdata *data)
+static int	rotate(t_fdata *d, int key)
 {
-	if (keycode == ESC || keycode == ESCM)
+	if (key == KEY_Q)
+		d->img.rz++;
+	else if (key == KEY_E)
+		d->img.rz--;
+	else if (key == KEY_W)
+		d->img.rx++;
+	else if (key == KEY_S)
+		d->img.rx--;
+	else if (key == KEY_D)
+		d->img.ry++;
+	else if (key == KEY_A)
+		d->img.ry--;
+	rotate_img(d, AXIS_Y, true);
+	rotate_img(d, AXIS_Z, false);
+	rotate_img(d, AXIS_X, false);
+	d->img.refresh = true;
+	return (1);
+}
+
+int	handle_key(int key, t_fdata *data)
+{
+	if (key == ESC || key == ESCM)
 		return (handle_close(data));
-	else if (keycode == KEY_I || keycode == KEYM_I)
+	else if (key == KEY_I || key == KEYM_I)
 		return (zoom_in(data));
-	else if (keycode == KEY_O || keycode == KEYM_O)
+	else if (key == KEY_O || key == KEYM_O)
 		return (zoom_out(data));
+	else if (key == KEY_Q || key == KEY_E || key == KEY_W || key == KEY_S
+		|| key == KEY_A || key == KEY_D)
+		return (rotate(data, key));
 	else
-		return (get_keycode(keycode));
+		return (get_keycode(key));
 	return (1);
 }

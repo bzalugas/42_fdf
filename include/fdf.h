@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/31 13:57:23 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/04 19:51:01 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 # define WIDTH 1280
 # define HEIGHT 720
 # define DEFAULT_OFFSET 0
-# define DEFAULT_SPACE 2
+# define DEFAULT_SPACE 10
 # define SIZE_ARR 1000000
 # define DEFAULT_DEG_X 35.264
-# define DEFAULT_DEG_Y 45
+# define DEFAULT_DEG_Z 45
 # define ANGLE_X 0.615
-# define ANGLE_Y M_PI_4
+# define ANGLE_Z M_PI_4
+# define AXIS_X 0
+# define AXIS_Y 1
+# define AXIS_Z 2
 
 
 typedef enum e_event
@@ -39,7 +42,13 @@ typedef enum e_key_linux
 {
 	ESC = 65307,
 	KEY_I = 105,
-	KEY_O = 111
+	KEY_O = 111,
+	KEY_E = 101,
+	KEY_Q = 113,
+	KEY_W = 119,
+	KEY_S = 115,
+	KEY_A = 97,
+	KEY_D = 100
 }			t_key_linux;
 
 typedef enum e_key_macos
@@ -53,10 +62,10 @@ typedef struct s_point
 {
 	int				i;
 	int				j;
-	int				h;
-	int				x;
-	int				y;
-	int				z;
+	int				k;
+	double			x;
+	double			y;
+	double			z;
 	unsigned int	color;
 	bool			visible;
 }				t_point;
@@ -76,8 +85,12 @@ typedef struct s_img
 	int		bpp; //bits_per_pixel
 	int		size; //size_line
 	int		end; //endian
-	int		old_sp;
+	bool	refresh;
 	int		sp; //space between points
+	int		center[2];
+	float	rx;
+	float	ry;
+	float	rz;
 	int		offset;
 }				t_img;
 
@@ -114,6 +127,7 @@ int				gradient(int c0, int c1, float distance, int ipixel);
 void			rotate_x(t_point *p, float angle);
 void			rotate_y(t_point *p, float angle);
 void			rotate_z(t_point *p, float angle);
+void			rotate_img(t_fdata *d, int axis, bool from_start);
 /*////////////////////////////////// UTILS ///////////////////////////////////*/
 void			put_pixel_img(t_img *img, int x, int y, int color);
 void			config_img(t_fdata *d);
