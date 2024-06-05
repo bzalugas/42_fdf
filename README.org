@@ -23,13 +23,17 @@ CLOCK: [2024-05-17 Fri 16:55]--[2024-05-17 Fri 17:15] =>  0:20
 CLOCK: [2024-05-17 Fri 12:30]--[2024-05-17 Fri 15:30] =>  3:00
 CLOCK: [2024-05-13 Mon 18:05]--[2024-05-13 Mon 19:37] =>  1:32
 :END:
-**** CODE Real zoom
+**** CODE Other events
+**** CODE Mouse rotations
+**** CODE Mouse zoom
+**** CODE Real zoom with scale matrix (?)
 :LOGBOOK:
 CLOCK: [2024-05-29 Wed 10:52]--[2024-05-29 Wed 11:57] =>  1:05
 :END:
-+ normalize coordinate system so display begins with center of the map
-  :LOGBOOK:
-**** CODING Put points with rotations
+**** CODE matrices combination
+**** CODE Display enhancement
+**** CODED Put points with rotations
+CLOSED: [2024-06-05 Wed 10:42]
 :LOGBOOK:
 CLOCK: [2024-06-04 Tue 18:41]--[2024-06-04 Tue 19:56] =>  1:15
 CLOCK: [2024-06-04 Tue 16:13]--[2024-06-04 Tue 18:23] =>  2:10
@@ -86,6 +90,7 @@ CLOCK: [2024-05-21 Tue 11:55]--[2024-05-21 Tue 14:07] =>  2:12
 :END:
 *** IN PROGRESS think/test/debug/etc
 :LOGBOOK:
+CLOCK: [2024-06-05 Wed 10:30]--[2024-06-05 Wed 11:45] =>  1:15
 CLOCK: [2024-06-03 Mon 11:11]--[2024-06-03 Mon 15:00] =>  3:49
 CLOCK: [2024-05-31 Fri 16:25]--[2024-05-31 Fri 16:41] =>  0:16
 CLOCK: [2024-05-31 Fri 12:10]--[2024-05-31 Fri 12:22] =>  0:12
