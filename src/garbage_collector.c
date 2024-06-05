@@ -6,12 +6,12 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:38:44 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/25 19:32:14 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/05 14:48:39 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-#include "../include/libft/libft.h"
+#include "../include/libft.h"
 #include <stdlib.h>
 
 void	*ft_mylloc(size_t size, t_list **trash)

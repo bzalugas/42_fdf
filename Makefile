@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 12:38:39 by bazaluga          #+#    #+#              #
-#    Updated: 2024/05/31 13:59:36 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/06/05 15:07:09 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -91,6 +91,7 @@ clean:
 		@echo $(RED)"CLEANING OBJS"
 		rm -f $(OBJ)
 		rm -f $(OBJ:.o=.d)
+		rm -rf $(OBJDIR)
 		@make -sC $(MLXDIR) clean
 		@make -sC $(LIBFTDIR) clean
 		@echo $(RESET)

@@ -2,6 +2,12 @@
 This project aims to teach the basics of 3D graphics project in C, including window management, event handling, colors, textures, etc.
 ** Graphical library
 To help us use the graphics of the computer, we use the MiniLibx library, which was developed internally.
+** Used projection
+For the mandatory part, we must display the maps using the [[https://en.wikipedia.org/wiki/Isometric_projection][isometric projection]] ([[https://fr.wikipedia.org/wiki/Perspective_isom%C3%A9trique][perspective isométrique]]). For this purpose and to handle bonuses (rotations, translations and zooms), I use the matrices rotation, translation & scale. To display the isometric projection, I just do rotations with corresponding angles (45 degrees on z then 35.264 degrees on x).
+
+* Project's use
+** Keymaps
+*** To be defined
 
 * Time spent
 ** IN PROGRESS FdF
@@ -32,8 +38,11 @@ CLOCK: [2024-05-29 Wed 10:52]--[2024-05-29 Wed 11:57] =>  1:05
 :END:
 **** CODE matrices combination
 **** CODE "Automatic" color on elevations
+**** CODE Right pixel "priority"
++ => when 2 pixels at same coords, show only the nearest point
 **** CODING Display enhancement [1/3]
 :LOGBOOK:
+CLOCK: [2024-06-05 Wed 14:50]--[2024-06-05 Wed 15:33] =>  0:43
 CLOCK: [2024-06-05 Wed 12:41]--[2024-06-05 Wed 13:08] =>  0:27
 :END:
 + [X] Show map name in window's title

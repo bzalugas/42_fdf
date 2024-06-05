@@ -6,11 +6,11 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 23:08:24 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/25 23:03:28 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/05 14:48:27 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft/libft.h"
+#include "../include/libft.h"
 
 static int	ft_strchr_rank(const char *s, char c)
 {

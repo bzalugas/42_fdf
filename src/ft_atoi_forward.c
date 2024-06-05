@@ -6,11 +6,11 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 12:17:00 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/21 21:19:15 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/05 14:48:11 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft/libft.h"
+#include "../include/libft.h"
 
 static int	get_nb(const char *nptr, char sign, int *i)
 {

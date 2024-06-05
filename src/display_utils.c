@@ -6,13 +6,13 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/04 19:56:37 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/05 14:48:02 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 #include "../include/mlx.h"
-#include "../include/libft/libft.h"
+#include "../include/libft.h"
 #include <math.h>
 
 void	put_pixel_img(t_img *img, int x, int y, int color)
