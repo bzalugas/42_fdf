@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:11:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/05 13:08:28 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:41:36 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 void	get_coords(t_fdata *d, t_point *p)
 {
+	//add x,y,z[2] in point struct to keep double & rounded values
 	p->x = round(d->img.center[0] + p->x);
 	p->y = round(d->img.center[1] + p->y);
 }
