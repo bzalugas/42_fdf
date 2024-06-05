@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:12:06 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/31 13:07:37 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/05 12:43:05 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int ac, char *av[])
 	parse_map(&d);
 	close(d.fd);
 	d.fd = -1;
-	display(&d);
+	display(&d, av[1]);
 	end_fdf(&d, 0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/04 21:58:56 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/05 12:42:59 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void			ft_free_garbage(void *ptr, t_list **trash);
 void			ft_empty_trash(t_list **trash);
 
 /********************************** DISPLAY ***********************************/
-void			display(t_fdata *d);
+void			display(t_fdata *d, char *filename);
 int				refresh_display(t_fdata *d);
 /* int				put_points(t_fdata *d); */
 int				draw_lines(t_fdata *d);
