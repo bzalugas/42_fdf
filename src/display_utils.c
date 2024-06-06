@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/05 14:48:02 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/06 10:55:20 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ void	create_image(t_fdata *d)
 
 void	config_img(t_fdata *d)
 {
-	d->img.offset = DEFAULT_OFFSET;
+	d->img.offset[0] = DEFAULT_OFFSETX;
+	d->img.offset[1] = DEFAULT_OFFSETY;
 	d->img.center[0] = WIDTH / 2;
 	d->img.center[1] = HEIGHT / 2;
-	d->img.sp = ft_min((WIDTH - d->img.offset) / (d->pts.c + 1),
-			(HEIGHT - d->img.offset) / (d->pts.r + 1));
+	d->img.sp = ft_min(WIDTH / (d->pts.c + 1), HEIGHT / (d->pts.r + 1));
 	if (d->img.sp < DEFAULT_SPACE)
 		d->img.sp = DEFAULT_SPACE;
 	d->img.rx = DEFAULT_DEG_X;

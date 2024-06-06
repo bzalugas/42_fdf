@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/05 12:42:59 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/06 11:20:41 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 # include "libft/libft.h"
 # define WIDTH 1280
 # define HEIGHT 720
-# define DEFAULT_OFFSET 0
+# define DEFAULT_OFFSETX 200
+# define DEFAULT_OFFSETY 0
 # define DEFAULT_SPACE 10
 # define SIZE_ARR 1000000
 # define DEFAULT_DEG_X 35.264
@@ -91,13 +92,13 @@ typedef struct s_img
 	int		bpp; //bits_per_pixel
 	int		size; //size_line
 	int		end; //endian
+	int		offset[2];
 	bool	refresh;
 	int		sp; //space between points
 	int		center[2];
 	float	rx;
 	float	ry;
 	float	rz;
-	int		offset;
 }				t_img;
 
 typedef struct s_fdata
@@ -123,8 +124,9 @@ void			ft_empty_trash(t_list **trash);
 /********************************** DISPLAY ***********************************/
 void			display(t_fdata *d, char *filename);
 int				refresh_display(t_fdata *d);
-/* int				put_points(t_fdata *d); */
 int				draw_lines(t_fdata *d);
+/*/////////////////////////////////// HUD ////////////////////////////////////*/
+void			display_hud(t_fdata *d);
 /*////////////////////////////////// COLORS //////////////////////////////////*/
 int				trgb_to_i(int t, int r, int g, int b);
 int				i_to_trgb(int color, int *r, int *g, int *b);

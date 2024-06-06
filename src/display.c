@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:11:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/05 15:41:36 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/06 10:56:21 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static int	put_points(t_fdata *d)
 		i++;
 	}
 	draw_lines(d);
-	mlx_put_image_to_window(d->mlx, d->win, d->img.ptr, d->img.offset,
-		d->img.offset);
+	mlx_put_image_to_window(d->mlx, d->win, d->img.ptr, d->img.offset[0],
+		d->img.offset[1]);
 	return (1);
 }
 
@@ -82,10 +82,11 @@ void	display(t_fdata *d, char *filename)
 	if (!d->mlx)
 		stop_error("Error at mlx initialization", d);
 	config_img(d);
-	d->win = mlx_new_window(d->mlx, WIDTH + d->img.offset,
-			HEIGHT + d->img.offset, ft_strjoin("FdF:  ", filename));
+	d->win = mlx_new_window(d->mlx, WIDTH + d->img.offset[0],
+			HEIGHT + d->img.offset[1], ft_strjoin("FdF:  ", filename));
 	if (!d->win)
 		stop_error("Error at mlx window initialization", d);
+	display_hud(d);
 	/* test_lines(d); */
 	put_points(d);
 	mlx_loop_hook(d->mlx, &refresh_display, d);
