@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:01:15 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/07 13:27:51 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:44:46 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,23 @@ static int	zoom_out(t_fdata *d)
 	return (1);
 }
 
+static int	normalize_angles(t_fdata *d)
+{
+	if ((int)d->img.rz >= 360)
+		d->img.rz -= 360;
+	else if ((int)d->img.rz < 0)
+		d->img.rz += 360;
+	if ((int)d->img.rx >= 360)
+		d->img.rx -= 360;
+	else if ((int)d->img.rx < 0)
+		d->img.rx += 360;
+	if ((int)d->img.ry >= 360)
+		d->img.ry -= 360;
+	else if ((int)d->img.ry < 0)
+		d->img.ry += 360;
+	return (1);
+}
+
 static int	rotate(t_fdata *d, int key)
 {
 	if (key == KEY_Q || key == KEYM_Q)
@@ -59,6 +76,7 @@ static int	rotate(t_fdata *d, int key)
 		d->img.ry++;
 	else if (key == KEY_A || key == KEYM_A)
 		d->img.ry--;
+	normalize_angles(d);
 	rotate_img(d, AXIS_Y, true);
 	rotate_img(d, AXIS_Z, false);
 	rotate_img(d, AXIS_X, false);

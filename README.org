@@ -38,14 +38,16 @@ CLOCK: [2024-05-29 Wed 10:52]--[2024-05-29 Wed 11:57] =>  1:05
 :END:
 **** CODE matrices combination
 **** CODE "Automatic" color on elevations
-**** CODE normalize angles
-+ when angle == 460, change to 0
 **** CODE Right pixel "priority"
 + => when 2 pixels at same coords, show only the nearest point
   + Idea: code every possible case (4 by axis) & browse array by right order
-**** CODING Display enhancement [3/3]
+**** CODED normalize angles
+CLOSED: [2024-06-07 Fri 13:46]
++ [X] when angle == 460, change to 0
+**** CODED Display enhancement [3/3]
+CLOSED: [2024-06-07 Fri 13:33]
 :LOGBOOK:
-CLOCK: [2024-06-07 Fri 12:28]
+CLOCK: [2024-06-07 Fri 12:28]--[2024-06-07 Fri 13:33] =>  1:05
 CLOCK: [2024-06-07 Fri 11:14]--[2024-06-07 Fri 11:16] =>  0:02
 CLOCK: [2024-06-07 Fri 09:52]--[2024-06-07 Fri 10:53] =>  1:01
 CLOCK: [2024-06-06 Thu 17:10]--[2024-06-06 Thu 18:06] =>  0:56
