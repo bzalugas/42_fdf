@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:22:49 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/05/26 19:33:31 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/07 12:39:01 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int				ft_max(int a, int b);
 int				*ft_max_arr(int *arr, size_t len);
 int				ft_min(int a, int b);
 int				*ft_min_arr(int *arr, size_t len);
+char			*ft_ftoa(double n, int precision);
 
 /******************************* FT_PRINTF ************************************/
 int				ft_printf(const char *format, ...);
