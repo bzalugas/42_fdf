@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:33:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/06 12:31:57 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:22:12 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,38 @@
 
 void	dynamic_hud(t_fdata *d)
 {
+	char	*rots[3];
+	char	*txts[3];
+	int		index[2];
+
 	mlx_string_put(d->mlx, d->win, 10, 200, 0xF4E7FD,
 		"_____________INFO_____________");
+	index[0] = 205;
+	while (index[0] < 250)
+	{
+		index[1] = 80;
+		while (index[1] < 130)
+		{
+			mlx_pixel_put(d->mlx, d->win, index[1], index[0], 0x0);
+			index[1]++;
+		}
+		index[0]++;
+	}
+	rots[0] = ft_ftoa(d->img.rx, 3);
+	rots[1] = ft_ftoa(d->img.ry, 3);
+	rots[2] = ft_ftoa(d->img.rz, 3);
+	txts[0] = ft_strjoin("Rotation X: ", rots[0]);
+	txts[1] = ft_strjoin("Rotation Y: ", rots[1]);
+	txts[2] = ft_strjoin("Rotation Z: ", rots[2]);
+	free(rots[0]);
+	free(rots[1]);
+	free(rots[2]);
+	mlx_string_put(d->mlx, d->win, 10, 215, 0xF4E7FD, txts[0]);
+	mlx_string_put(d->mlx, d->win, 10, 230, 0xF4E7FD, txts[1]);
+	mlx_string_put(d->mlx, d->win, 10, 245, 0xF4E7FD, txts[2]);
+	free(txts[0]);
+	free(txts[1]);
+	free(txts[2]);
 
 }
 

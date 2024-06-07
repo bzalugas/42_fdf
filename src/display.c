@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:11:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/06 10:56:21 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:10:59 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,16 @@ void	test_lines(t_fdata *d);
 
 void	display(t_fdata *d, char *filename)
 {
+	char	*title;
+
 	d->mlx = mlx_init();
 	if (!d->mlx)
 		stop_error("Error at mlx initialization", d);
 	config_img(d);
+	title = ft_strjoin("FdF:  ", filename);
 	d->win = mlx_new_window(d->mlx, WIDTH + d->img.offset[0],
-			HEIGHT + d->img.offset[1], ft_strjoin("FdF:  ", filename));
+			HEIGHT + d->img.offset[1], title);
+	free(title);
 	if (!d->win)
 		stop_error("Error at mlx window initialization", d);
 	display_hud(d);

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/06 11:20:41 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:28:15 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ int				refresh_display(t_fdata *d);
 int				draw_lines(t_fdata *d);
 /*/////////////////////////////////// HUD ////////////////////////////////////*/
 void			display_hud(t_fdata *d);
+void			dynamic_hud(t_fdata *d);
 /*////////////////////////////////// COLORS //////////////////////////////////*/
 int				trgb_to_i(int t, int r, int g, int b);
 int				i_to_trgb(int color, int *r, int *g, int *b);
