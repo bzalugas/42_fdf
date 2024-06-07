@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:17:48 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/04 10:51:53 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:58:35 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,18 +137,4 @@ int	draw_lines(t_fdata *d)
 		i++;
 	}
 	return (1);
-}
-#include "../include/mlx.h"
-void	test_lines(t_fdata *d)
-{
-	t_point p1;
-	t_point p2;
-
-	p1 = (t_point){0,0,0,0,0,0,0xff0000, true};
-	p2 = (t_point){0,0,0,600,700,0,0xff0000, true};
-	create_image(d);
-	put_pixel_img(&d->img, p1.x, p1.y, p1.color);
-	put_pixel_img(&d->img, p2.x, p2.y, p2.color);
-	draw_line(d, &p1, &p2);
-	mlx_put_image_to_window(d->mlx, d->win, d->img.ptr, 0, 0);
 }

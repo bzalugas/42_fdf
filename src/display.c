@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:11:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/07 13:10:59 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:58:48 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	get_coords(t_fdata *d, t_point *p)
 	p->y = round(d->img.center[1] + p->y);
 }
 
-#include <stdio.h>
 static int	put_points(t_fdata *d)
 {
 	int			i;
@@ -33,19 +32,8 @@ static int	put_points(t_fdata *d)
 	i = 0;
 	while (i < d->pts.size)
 	{
-		/* arr[i].x = arr[i].i * d->img.sp; */
-		/* arr[i].y = arr[i].j * d->img.sp; */
-		/* arr[i].z = arr[i].k * 5; //kinda stupid ofc */
-		/* rotate_z(&arr[i], d->img.rz); */
-		/* rotate_x(&arr[i], d->img.rx); */
-		/* rotate_y(&arr[i], d->img.ry); */
 		get_coords(d, &arr[i]);
 		arr[i].visible = true;
-		/* if (arr[i].x < WIDTH && arr[i].x >= 0 */
-		/* 	&& arr[i].y < HEIGHT && arr[i].y >= 0) */
-		/* 	put_pixel_img(&d->img, arr[i].x, arr[i].y, arr[i].color); */
-		/* else */
-		/* 	arr[i].visible = false; */
 		if (arr[i].x >= WIDTH || arr[i].x < 0
 			|| arr[i].y >= HEIGHT || arr[i].y < 0)
 			arr[i].visible = false;
@@ -59,7 +47,6 @@ static int	put_points(t_fdata *d)
 
 int	refresh_display(t_fdata *d)
 {
-	/* int	diff; */
 	//Optimization: instead of creating a black image then putting points,
 	//fill all the image that doesn't have a point with black at each put_points
 	if (!d->img.ptr)
@@ -67,14 +54,11 @@ int	refresh_display(t_fdata *d)
 	if (d->img.refresh)
 	{
 		d->img.refresh = false;
-		/* diff = d->img.sp - d->img.old_sp; */
 		ft_bzero(d->img.addr, d->img.size * HEIGHT);
 		return (put_points(d));
 	}
 	return (1);
 }
-
-void	test_lines(t_fdata *d);
 
 void	display(t_fdata *d, char *filename)
 {
@@ -91,7 +75,6 @@ void	display(t_fdata *d, char *filename)
 	if (!d->win)
 		stop_error("Error at mlx window initialization", d);
 	display_hud(d);
-	/* test_lines(d); */
 	put_points(d);
 	mlx_loop_hook(d->mlx, &refresh_display, d);
 	mlx_hook(d->win, DESTROY, 0, &handle_close, d);
