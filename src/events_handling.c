@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:01:15 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/07 13:44:46 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/12 11:40:43 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ static int	normalize_angles(t_fdata *d)
 
 static int	rotate(t_fdata *d, int key)
 {
-	if (key == KEY_Q || key == KEYM_Q)
+	if (key == KEY_E || key == KEYM_E)
 		d->img.rz++;
-	else if (key == KEY_E || key == KEYM_E)
+	else if (key == KEY_Q || key == KEYM_Q)
 		d->img.rz--;
 	else if (key == KEY_W || key == KEYM_W)
 		d->img.rx++;

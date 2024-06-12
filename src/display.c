@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:11:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/07 13:58:48 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:28:56 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@
 
 void	get_coords(t_fdata *d, t_point *p)
 {
-	//add x,y,z[2] in point struct to keep double & rounded values
 	p->x = round(d->img.center[0] + p->x);
 	p->y = round(d->img.center[1] + p->y);
 }
-
+#include <stdio.h>
 static int	put_points(t_fdata *d)
 {
 	int			i;
@@ -37,6 +36,8 @@ static int	put_points(t_fdata *d)
 		if (arr[i].x >= WIDTH || arr[i].x < 0
 			|| arr[i].y >= HEIGHT || arr[i].y < 0)
 			arr[i].visible = false;
+		/* if (i == 0) */
+		/* 	printf("first point = (%f,%f,%f)\n", arr[i].x, arr[i].y, arr[i].z); */
 		i++;
 	}
 	draw_lines(d);
@@ -47,8 +48,6 @@ static int	put_points(t_fdata *d)
 
 int	refresh_display(t_fdata *d)
 {
-	//Optimization: instead of creating a black image then putting points,
-	//fill all the image that doesn't have a point with black at each put_points
 	if (!d->img.ptr)
 		return (0);
 	if (d->img.refresh)

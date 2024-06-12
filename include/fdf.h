@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/07 13:28:15 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:47:39 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,13 @@ typedef struct s_point
 	bool			visible;
 }				t_point;
 
+typedef	struct s_ptline
+{
+	bool	draw;
+	double	z0;
+	double	z1;
+}				t_ptline;
+
 typedef struct s_pts_arr
 {
 	int	r; //rows
@@ -99,6 +106,7 @@ typedef struct s_img
 	float	rx;
 	float	ry;
 	float	rz;
+	t_ptline	*ptslines;
 }				t_img;
 
 typedef struct s_fdata
