@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:01:15 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 18:35:20 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 20:25:40 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,26 @@ static int	get_keycode(int keycode)
 	return (1);
 }
 
+
+int	handle_mouse(int but, int x, int y, t_fdata *d)
+{
+	(void)x;
+	(void)y;
+	if (but == MS_WHEEL_UP)
+		return (zoom_in(d));
+	else if (but == MS_WHEEL_DN)
+		return (zoom_out(d));
+	return (1);
+}
+
 static int	handle_key2(int key, t_fdata *d)
 {
 	if (key == KEY_R)
 		return (reset(d));
 	else if (key == KEY_L)
 		return (toggle_lines(d));
+	else if (key == KEY_P)
+		return (toggle_projection(d));
 	else
 		return (get_keycode(key));
 }

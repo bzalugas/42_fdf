@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:38:12 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 14:39:31 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 20:19:53 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,24 @@ static int	normalize_angles(t_fdata *d)
 
 int	rotate(t_fdata *d, int key)
 {
+	float	add;
+
+	if (d->img.projection == 1)
+		add = 1;
+	else
+		add = 90;
 	if (key == KEY_E || key == KEYM_E)
-		d->img.rz++;
+		d->img.rz += add;
 	else if (key == KEY_Q || key == KEYM_Q)
-		d->img.rz--;
+		d->img.rz -= add;
 	else if (key == KEY_W || key == KEYM_W)
-		d->img.rx++;
+		d->img.rx += add;
 	else if (key == KEY_S || key == KEYM_S)
-		d->img.rx--;
+		d->img.rx -= add;
 	else if (key == KEY_D || key == KEYM_D)
-		d->img.ry++;
+		d->img.ry += add;
 	else if (key == KEY_A || key == KEYM_A)
-		d->img.ry--;
+		d->img.ry -= add;
 	normalize_angles(d);
 	rotate_img(d, AXIS_Y, true);
 	rotate_img(d, AXIS_Z, false);

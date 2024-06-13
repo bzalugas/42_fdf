@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:58:36 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 18:37:59 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 20:24:39 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,24 @@ int	reset(t_fdata *d)
 int	toggle_lines(t_fdata *d)
 {
 	d->img.tog_lines = -d->img.tog_lines;
+	d->img.refresh = true;
+	return (1);
+}
+
+int	toggle_projection(t_fdata *d)
+{
+	d->img.projection = -d->img.projection;
+	if (d->img.projection == -1)
+	{
+		d->img.rx = 90.0;
+		d->img.ry = 0;
+		d->img.rz = 0;
+	}
+	else
+		return (reset(d));
+	rotate_img(d, AXIS_Y, true);
+	rotate_img(d, AXIS_Z, false);
+	rotate_img(d, AXIS_X, false);
 	d->img.refresh = true;
 	return (1);
 }

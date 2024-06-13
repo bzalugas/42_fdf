@@ -29,9 +29,18 @@ CLOCK: [2024-05-17 Fri 16:55]--[2024-05-17 Fri 17:15] =>  0:20
 CLOCK: [2024-05-17 Fri 12:30]--[2024-05-17 Fri 15:30] =>  3:00
 CLOCK: [2024-05-13 Mon 18:05]--[2024-05-13 Mon 19:37] =>  1:32
 :END:
-**** CODE Other events
-**** CODE Mouse rotations
-**** CODE Mouse zoom
+**** CODED Other projection
+CLOSED: [2024-06-13 Thu 20:29]
+:LOGBOOK:
+CLOCK: [2024-06-13 Thu 20:16]--[2024-06-13 Thu 20:29] =>  0:13
+:END:
+**** ABORTED Mouse rotations
+CLOSED: [2024-06-13 Thu 20:13]
+**** ABORTED Mouse zoom
+CLOSED: [2024-06-13 Thu 20:13]
+:LOGBOOK:
+CLOCK: [2024-06-13 Thu 19:14]--[2024-06-13 Thu 20:13] =>  0:59
+:END:
 **** CODED Toggle lines
 CLOSED: [2024-06-13 Thu 18:58]
 **** CODED Reset position
@@ -50,11 +59,13 @@ CLOSED: [2024-06-13 Thu 15:11]
 :LOGBOOK:
 CLOCK: [2024-06-13 Thu 14:49]--[2024-06-13 Thu 15:11] =>  0:22
 :END:
-**** CODE Real zoom with scale matrix (?)
+**** ABORTED Real zoom with scale matrix (?)
+CLOSED: [2024-06-13 Thu 20:13]
 :LOGBOOK:
 CLOCK: [2024-05-29 Wed 10:52]--[2024-05-29 Wed 11:57] =>  1:05
 :END:
-**** CODE matrices combination
+**** ABORTED matrices combination
+CLOSED: [2024-06-13 Thu 20:13]
 **** CODED "Automatic" color on elevations
 CLOSED: [2024-06-13 Thu 14:45]
 :LOGBOOK:

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 18:37:24 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 20:26:40 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ void	config_img(t_fdata *d)
 	rotate_img(d, AXIS_Z, true);
 	rotate_img(d, AXIS_X, false);
 	d->img.tog_lines = 1;
+	d->img.projection = 1;
 	ft_printf("sp = %d\n", d->img.sp);
 }

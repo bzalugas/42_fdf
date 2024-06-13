@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:11:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 18:48:22 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 19:16:04 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void	display(t_fdata *d, char *filename)
 	mlx_loop_hook(d->mlx, &refresh_display, d);
 	mlx_hook(d->win, DESTROY, 0, &handle_close, d);
 	mlx_hook(d->win, KEYDOWN, 1L << 0, &handle_key, d);
+	mlx_hook(d->win, MOUSEDOWN, 1L << 2, &handle_mouse, d);
 	mlx_loop(d->mlx);
 }

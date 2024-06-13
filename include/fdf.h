@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 18:48:04 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 20:30:14 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ typedef enum e_event
 	DESTROY = 17
 }				t_event;
 
+typedef enum e_button_linux
+{
+	MS_WHEEL_UP = 4,
+	MS_WHEEL_DN = 5
+}			t_button_linux;
+
 typedef enum e_key_linux
 {
 	ESC = 65307,
@@ -79,7 +85,8 @@ typedef enum e_key_linux
 	KEY_J = 106,
 	KEY_K = 107,
 	KEY_R = 114,
-	KEY_L = 108
+	KEY_L = 108,
+	KEY_P = 112
 }			t_key_linux;
 
 typedef enum e_key_macos
@@ -145,6 +152,7 @@ typedef struct s_img
 	t_col_type	col_mode;
 	char		rot_mode;
 	char		tog_lines;
+	char		projection;
 }				t_img;
 
 typedef struct s_fdata
@@ -198,6 +206,7 @@ void			normalize_coords(t_fdata *d, t_point *origin);
 /******************************* EVENTS HANDLING ******************************/
 int				handle_close(t_fdata *data);
 int				handle_key(int keycode, t_fdata *data);
+int				handle_mouse(int but, int x, int y, t_fdata *d);
 int				zoom_in(t_fdata *d);
 int				zoom_out(t_fdata *d);
 int				rotate(t_fdata *d, int key);
@@ -206,6 +215,7 @@ int				change_elevation(t_fdata *d, int key);
 int				translate(t_fdata *d, int key);
 int				reset(t_fdata *d);
 int				toggle_lines(t_fdata *d);
+int				toggle_projection(t_fdata *d);
 
 /************************** COMPATIBILITY FUNCTIONS ***************************/
 int				mlx2_destroy_display(void *xvar);
