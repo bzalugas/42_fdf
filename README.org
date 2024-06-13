@@ -32,7 +32,8 @@ CLOCK: [2024-05-13 Mon 18:05]--[2024-05-13 Mon 19:37] =>  1:32
 **** CODE Other events
 **** CODE Mouse rotations
 **** CODE Mouse zoom
-**** CODE Toggle lines
+**** CODED Toggle lines
+CLOSED: [2024-06-13 Thu 18:58]
 **** CODED Reset position
 CLOSED: [2024-06-13 Thu 18:28]
 :LOGBOOK:

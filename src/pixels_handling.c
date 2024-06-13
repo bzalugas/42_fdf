@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 09:51:14 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 10:08:19 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 18:53:52 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,20 @@ bool	is_infront(int xy[2], t_ptline *ptl, t_fdata *d)
 		|| (actual->draw && actual->z0 < ptl->z0 && actual->z1 < ptl->z1))
 	{
 		*actual = *ptl;
+		return (true);
+	}
+	return (false);
+}
+
+bool	pt_infront(t_point *p, t_fdata *d)
+{
+	t_ptline	*actual;
+
+	actual = &d->img.ptslines[WIDTH * (int)p->y + (int)p->x];
+	if (!actual->draw
+		|| (actual->draw && actual->z0 < p->z))
+	{
+		*actual = (t_ptline){true, p->z, p->z};
 		return (true);
 	}
 	return (false);

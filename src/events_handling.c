@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:01:15 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 17:48:22 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 18:35:20 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	handle_key2(int key, t_fdata *d)
 {
 	if (key == KEY_R)
 		return (reset(d));
+	else if (key == KEY_L)
+		return (toggle_lines(d));
 	else
 		return (get_keycode(key));
 }

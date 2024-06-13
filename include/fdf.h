@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 18:06:19 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 18:48:04 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ typedef enum e_key_linux
 	KEY_C = 99,
 	KEY_J = 106,
 	KEY_K = 107,
-	KEY_R = 114
+	KEY_R = 114,
+	KEY_L = 108
 }			t_key_linux;
 
 typedef enum e_key_macos
@@ -143,6 +144,7 @@ typedef struct s_img
 	t_ptline	*ptslines;
 	t_col_type	col_mode;
 	char		rot_mode;
+	char		tog_lines;
 }				t_img;
 
 typedef struct s_fdata
@@ -187,6 +189,7 @@ void			rotate_img(t_fdata *d, int axis, bool from_start);
 void			put_pixel_img(t_img *img, int x, int y, int color);
 void			init_pixels_arr(t_fdata *d);
 bool			is_infront(int xy[2], t_ptline *ptl, t_fdata *d);
+bool			pt_infront(t_point *p, t_fdata *d);
 /*////////////////////////////////// UTILS ///////////////////////////////////*/
 void			config_img(t_fdata *d);
 void			create_image(t_fdata *d);
@@ -202,6 +205,7 @@ int				toggle_colors(t_fdata *d);
 int				change_elevation(t_fdata *d, int key);
 int				translate(t_fdata *d, int key);
 int				reset(t_fdata *d);
+int				toggle_lines(t_fdata *d);
 
 /************************** COMPATIBILITY FUNCTIONS ***************************/
 int				mlx2_destroy_display(void *xvar);

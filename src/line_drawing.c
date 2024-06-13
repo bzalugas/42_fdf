@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:17:48 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 14:33:55 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 18:40:38 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,6 @@ int	draw_lines(t_fdata *d)
 	i = 0;
 	pts = d->pts.arr;
 
-	init_pixels_arr(d);
 	while (i < d->pts.size)
 	{
 		if (i % d->pts.c != d->pts.c - 1

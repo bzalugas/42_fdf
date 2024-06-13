@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:11:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 16:56:14 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 18:48:22 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	put_points(t_fdata *d)
 		create_image(d);
 	arr = d->pts.arr;
 	i = 0;
+	init_pixels_arr(d);
 	while (i < d->pts.size)
 	{
 		get_coords(d, &arr[i]);
@@ -39,11 +40,14 @@ static int	put_points(t_fdata *d)
 		if (arr[i].x >= WIDTH || arr[i].x < 0
 			|| arr[i].y >= HEIGHT || arr[i].y < 0)
 			arr[i].visible = false;
+		else if (d->img.tog_lines == -1 && pt_infront(&arr[i], d))
+			put_pixel_img(&d->img, arr[i].x, arr[i].y, arr[i].color);
 		i++;
 	}
 	if (!d->img.normalized)
 		d->img.normalized = true;
-	draw_lines(d);
+	if (d->img.tog_lines == 1)
+		draw_lines(d);
 	mlx_put_image_to_window(d->mlx, d->win, d->img.ptr, d->img.offset[0],
 		d->img.offset[1]);
 	return (1);
