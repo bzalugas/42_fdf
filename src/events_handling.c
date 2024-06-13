@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:01:15 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 16:25:10 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:48:22 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ static int	get_keycode(int keycode)
 {
 	ft_printf("keycode = %d\n", keycode);
 	return (1);
+}
+
+static int	handle_key2(int key, t_fdata *d)
+{
+	if (key == KEY_R)
+		return (reset(d));
+	else
+		return (get_keycode(key));
 }
 
 int	handle_key(int key, t_fdata *data)
@@ -48,6 +56,6 @@ int	handle_key(int key, t_fdata *data)
 	else if (key == KEY_J || key == KEY_K)
 		return (change_elevation(data, key));
 	else
-		return (get_keycode(key));
+		return (handle_key2(key, data));
 	return (1);
 }

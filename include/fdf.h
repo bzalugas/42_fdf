@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 16:24:16 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 18:06:19 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define HEIGHT 720
 # define DEFAULT_OFFSETX 200
 # define DEFAULT_OFFSETY 0
-# define DEFAULT_SPACE 10
+# define DEFAULT_SPACE 1
 # define SIZE_ARR 1000000
 # define DEFAULT_DEG_X 35.264
 # define DEFAULT_DEG_Z 45
@@ -77,7 +77,8 @@ typedef enum e_key_linux
 	KEY_D = 100,
 	KEY_C = 99,
 	KEY_J = 106,
-	KEY_K = 107
+	KEY_K = 107,
+	KEY_R = 114
 }			t_key_linux;
 
 typedef enum e_key_macos
@@ -200,6 +201,7 @@ int				rotate(t_fdata *d, int key);
 int				toggle_colors(t_fdata *d);
 int				change_elevation(t_fdata *d, int key);
 int				translate(t_fdata *d, int key);
+int				reset(t_fdata *d);
 
 /************************** COMPATIBILITY FUNCTIONS ***************************/
 int				mlx2_destroy_display(void *xvar);

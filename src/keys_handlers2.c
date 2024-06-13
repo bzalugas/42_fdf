@@ -6,11 +6,12 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:58:36 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 17:36:33 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 18:26:06 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
+#include <math.h>
 
 int	change_elevation(t_fdata *d, int key)
 {
@@ -41,5 +42,27 @@ int	translate(t_fdata *d, int key)
 	rotate_img(d, AXIS_Z, false);
 	rotate_img(d, AXIS_X, false);
 	d->img.refresh = true;
+	return (1);
+}
+
+int	reset(t_fdata *d)
+{
+	int	max;
+
+	d->img.elev = 1.0;
+	d->img.rx = DEFAULT_DEG_X;
+	d->img.ry = 0;
+	d->img.rz = DEFAULT_DEG_Z;
+	d->img.tx = 0;
+	d->img.ty = 0;
+	max = ft_max(d->pts.r, d->pts.c);
+	d->img.sp = ft_max((WIDTH / 2) / max, (HEIGHT / 2) / max);
+	if (d->img.sp < DEFAULT_SPACE)
+		d->img.sp = DEFAULT_SPACE;
+	rotate_img(d, AXIS_Y, true);
+	rotate_img(d, AXIS_Z, false);
+	rotate_img(d, AXIS_X, false);
+	d->img.refresh = true;
+	dynamic_hud(d);
 	return (1);
 }

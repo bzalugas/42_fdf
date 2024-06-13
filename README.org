@@ -33,7 +33,11 @@ CLOCK: [2024-05-13 Mon 18:05]--[2024-05-13 Mon 19:37] =>  1:32
 **** CODE Mouse rotations
 **** CODE Mouse zoom
 **** CODE Toggle lines
-**** CODE Reset position
+**** CODED Reset position
+CLOSED: [2024-06-13 Thu 18:28]
+:LOGBOOK:
+CLOCK: [2024-06-13 Thu 17:42]--[2024-06-13 Thu 18:28] =>  0:46
+:END:
 **** CODED Translations
 CLOSED: [2024-06-13 Thu 17:40]
 :LOGBOOK:
