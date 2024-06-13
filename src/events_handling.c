@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:01:15 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 14:41:11 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:02:53 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	handle_key(int key, t_fdata *data)
 		return (rotate(data, key));
 	else if (key == KEY_C)
 		toggle_colors(data);
+	else if (key == KEY_J || key == KEY_K)
+		change_elevation(data, key);
 	else
 		return (get_keycode(key));
 	return (1);

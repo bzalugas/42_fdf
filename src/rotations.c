@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 12:58:23 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 14:44:38 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:07:52 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,11 @@ void	rotate_img(t_fdata *d, int axis, bool from_start)
 			// USE SCALE MATRIX ?
 			d->pts.arr[i].x = d->pts.arr[i].i * d->img.sp;
 			d->pts.arr[i].y = d->pts.arr[i].j * d->img.sp;
-			d->pts.arr[i].z = d->pts.arr[i].k * d->img.sp / 8;
+			if (d->pts.arr[i].k != 0)
+				d->pts.arr[i].z =
+					(d->pts.arr[i].k * d->img.elev) * d->img.sp / 8;
+			else
+				d->pts.arr[i].z = d->pts.arr[i].k * d->img.sp / 8;
 		}
 		fun[axis](&d->pts.arr[i], angle[axis]);
 		i++;

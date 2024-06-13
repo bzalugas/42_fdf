@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 14:39:26 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:07:15 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,9 @@ typedef enum e_key_linux
 	KEY_S = 115,
 	KEY_A = 97,
 	KEY_D = 100,
-	KEY_C = 99
+	KEY_C = 99,
+	KEY_J = 106,
+	KEY_K = 107
 }			t_key_linux;
 
 typedef enum e_key_macos
@@ -132,6 +134,7 @@ typedef struct s_img
 	float		rx;
 	float		ry;
 	float		rz;
+	float		elev;
 	bool		normalized;
 	t_ptline	*ptslines;
 	t_col_type	col_mode;
@@ -191,6 +194,7 @@ int				zoom_in(t_fdata *d);
 int				zoom_out(t_fdata *d);
 int				rotate(t_fdata *d, int key);
 int				toggle_colors(t_fdata *d);
+void			change_elevation(t_fdata *d, int key);
 
 /************************** COMPATIBILITY FUNCTIONS ***************************/
 int				mlx2_destroy_display(void *xvar);

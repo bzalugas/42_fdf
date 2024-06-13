@@ -32,6 +32,11 @@ CLOCK: [2024-05-13 Mon 18:05]--[2024-05-13 Mon 19:37] =>  1:32
 **** CODE Other events
 **** CODE Mouse rotations
 **** CODE Mouse zoom
+**** CODED Change elevations
+CLOSED: [2024-06-13 Thu 15:11]
+:LOGBOOK:
+CLOCK: [2024-06-13 Thu 14:49]--[2024-06-13 Thu 15:11] =>  0:22
+:END:
 **** CODE Real zoom with scale matrix (?)
 :LOGBOOK:
 CLOCK: [2024-05-29 Wed 10:52]--[2024-05-29 Wed 11:57] =>  1:05

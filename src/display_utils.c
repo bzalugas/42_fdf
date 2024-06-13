@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 09:52:37 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:09:19 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	config_img(t_fdata *d)
 	d->img.sp = ft_min(WIDTH / (d->pts.c + 1), HEIGHT / (d->pts.r + 1));
 	if (d->img.sp < DEFAULT_SPACE)
 		d->img.sp = DEFAULT_SPACE;
+	d->img.elev = 1.0;
 	d->img.ptslines = ft_cylloc(HEIGHT * WIDTH, sizeof(t_ptline), &d->trash);
 	if (!d->img.ptslines)
 		stop_error("ptslines allocation error", d);
