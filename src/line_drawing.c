@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:17:48 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 09:59:30 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:33:55 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	line_high(t_fdata *d, t_point *p0, t_point *p1, int deltas[2])
 	{
 		if (is_infront(xy, &(t_ptline){true, p0->z, p1->z}, d))
 			put_pixel_img(&d->img, xy[0], xy[1], gradient(p0->color, p1->color,
-				deltas[1], xy[1] - p0->y));
+					deltas[1], xy[1] - p0->y));
 		err += slope;
 		if (err >= 0)
 		{
@@ -65,7 +65,7 @@ static void	line_low(t_fdata *d, t_point *p0, t_point *p1, int deltas[2])
 	{
 		if (is_infront(xy, &(t_ptline){true, p0->z, p1->z}, d))
 			put_pixel_img(&d->img, xy[0], xy[1], gradient(p0->color, p1->color,
-				deltas[0], xy[0] - p0->x));
+					deltas[0], xy[0] - p0->x));
 		err += slope;
 		if (err >= 0)
 		{
@@ -89,8 +89,8 @@ static void	line_straight(t_fdata *d, t_point *p0, t_point *p1, int deltas[2])
 		while (xy[0] != p1->x + inc)
 		{
 			if (is_infront(xy, &(t_ptline){true, p0->z, p1->z}, d))
-				put_pixel_img(&d->img, xy[0], xy[1], gradient(p0->color, p1->color,
-					deltas[0], xy[0] - p0->x));
+				put_pixel_img(&d->img, xy[0], xy[1], gradient(p0->color,
+						p1->color, deltas[0], xy[0] - p0->x));
 			xy[0] += inc;
 		}
 		return ;
@@ -100,7 +100,7 @@ static void	line_straight(t_fdata *d, t_point *p0, t_point *p1, int deltas[2])
 	{
 		if (is_infront(xy, &(t_ptline){true, p0->z, p1->z}, d))
 			put_pixel_img(&d->img, xy[0], xy[1], gradient(p0->color, p1->color,
-				deltas[1], xy[1] - p0->y));
+					deltas[1], xy[1] - p0->y));
 		xy[1] += inc;
 	}
 }

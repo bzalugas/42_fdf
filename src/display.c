@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:11:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/12 14:28:56 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:40:00 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@
 
 void	get_coords(t_fdata *d, t_point *p)
 {
-	p->x = round(d->img.center[0] + p->x);
-	p->y = round(d->img.center[1] + p->y);
+	if (!d->img.normalized)
+	{
+		p->x = round(d->img.center[0] + p->x);
+		p->y = round(d->img.center[1] + p->y);
+	}
 }
-#include <stdio.h>
+
 static int	put_points(t_fdata *d)
 {
 	int			i;
@@ -36,10 +39,10 @@ static int	put_points(t_fdata *d)
 		if (arr[i].x >= WIDTH || arr[i].x < 0
 			|| arr[i].y >= HEIGHT || arr[i].y < 0)
 			arr[i].visible = false;
-		/* if (i == 0) */
-		/* 	printf("first point = (%f,%f,%f)\n", arr[i].x, arr[i].y, arr[i].z); */
 		i++;
 	}
+	if (!d->img.normalized)
+		d->img.normalized = true;
 	draw_lines(d);
 	mlx_put_image_to_window(d->mlx, d->win, d->img.ptr, d->img.offset[0],
 		d->img.offset[1]);

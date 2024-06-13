@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 09:57:44 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:39:26 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,30 @@
 # define AXIS_Y 1
 # define AXIS_Z 2
 
+typedef enum e_col_type
+{
+	COLOR_RAW,
+	COLOR_AUTO
+}			t_col_type;
+
+typedef enum e_palette_pos
+{
+	POS4 = 0x63372c,
+	POS3 = 0x9c5644,
+	POS2 = 0xba533a,
+	POS1 = 0xedde58,
+	POS0 = 0x3ca814
+
+}			t_palette_pos;
+
+typedef enum e_palette_neg
+{
+	NEG3 = 0x084a66,
+	NEG2 = 0x0e7ead,
+	NEG1 = 0x3fa1b5,
+	NEG0 = 0x3ca814
+
+}			t_palette_neg;
 
 typedef enum e_event
 {
@@ -49,7 +73,8 @@ typedef enum e_key_linux
 	KEY_W = 119,
 	KEY_S = 115,
 	KEY_A = 97,
-	KEY_D = 100
+	KEY_D = 100,
+	KEY_C = 99
 }			t_key_linux;
 
 typedef enum e_key_macos
@@ -74,6 +99,7 @@ typedef struct s_point
 	double			y;
 	double			z;
 	unsigned int	color;
+	unsigned int	color2;
 	bool			visible;
 }				t_point;
 
@@ -86,7 +112,7 @@ typedef	struct s_ptline
 
 typedef struct s_pts_arr
 {
-	int	r; //rows
+	int	r; //rows => change types to size_t !!!!
 	int	c; //cols
 	int	size;
 	t_point	*arr;
@@ -94,19 +120,21 @@ typedef struct s_pts_arr
 
 typedef struct s_img
 {
-	void	*ptr;
-	char	*addr;
-	int		bpp; //bits_per_pixel
-	int		size; //size_line
-	int		end; //endian
-	int		offset[2];
-	bool	refresh;
-	int		sp; //space between points
-	int		center[2];
-	float	rx;
-	float	ry;
-	float	rz;
+	void		*ptr;
+	char		*addr;
+	int			bpp; //bits_per_pixel
+	int			size; //size_line
+	int			end; //endian
+	int			offset[2];
+	bool		refresh;
+	int			sp; //space between points
+	int			center[2];
+	float		rx;
+	float		ry;
+	float		rz;
+	bool		normalized;
 	t_ptline	*ptslines;
+	t_col_type	col_mode;
 }				t_img;
 
 typedef struct s_fdata
@@ -140,6 +168,8 @@ void			dynamic_hud(t_fdata *d);
 int				trgb_to_i(int t, int r, int g, int b);
 int				i_to_trgb(int color, int *r, int *g, int *b);
 int				gradient(int c0, int c1, float distance, int ipixel);
+void			reset_colors(t_fdata *d);
+void			auto_colors(t_fdata *d);
 /*//////////////////////////////// ROTATIONS /////////////////////////////////*/
 void			rotate_x(t_point *p, float angle);
 void			rotate_y(t_point *p, float angle);
@@ -157,6 +187,10 @@ void			normalize_coords(t_fdata *d, t_point *origin);
 /******************************* EVENTS HANDLING ******************************/
 int				handle_close(t_fdata *data);
 int				handle_key(int keycode, t_fdata *data);
+int				zoom_in(t_fdata *d);
+int				zoom_out(t_fdata *d);
+int				rotate(t_fdata *d, int key);
+int				toggle_colors(t_fdata *d);
 
 /************************** COMPATIBILITY FUNCTIONS ***************************/
 int				mlx2_destroy_display(void *xvar);

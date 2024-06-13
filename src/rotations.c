@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 12:58:23 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/04 19:47:28 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:44:38 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	rotate_z(t_point *p, float angle)
 	p->y = y2;
 }
 
-//Do a version with matrices combination to do all rotations in 1 time
-
 void	rotate_img(t_fdata *d, int axis, bool from_start)
 {
 	int		i;
@@ -73,4 +71,5 @@ void	rotate_img(t_fdata *d, int axis, bool from_start)
 		fun[axis](&d->pts.arr[i], angle[axis]);
 		i++;
 	}
+	d->img.normalized = false;
 }

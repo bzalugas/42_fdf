@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:55:11 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/04 17:57:17 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:43:59 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,20 @@ static int	get_points_line(char *line, t_fdata *data, int y, int start)
 	int		i;
 	int		j;
 	int		x;
-	t_point	*arr;
 
-	arr = data->pts.arr;
 	i = 0;
 	x = 0;
 	while (line && line[i])
 	{
-		arr[start].k = ft_atoi_forward(&line[i], &j);
+		data->pts.arr[start].k = ft_atoi_forward(&line[i], &j);
 		if (j == -1)
 			stop_error("Error trying to get the z value", data);
-		arr[start].i = x;
-		arr[start].j = y;
-		arr[start].z = arr[start].k;
-		if (!get_color(&line[i + j], &arr[start], &j))
-			arr[start].color = 0xFFFFFF;
+		data->pts.arr[start].i = x;
+		data->pts.arr[start].j = y;
+		data->pts.arr[start].z = data->pts.arr[start].k;
+		if (!get_color(&line[i + j], &data->pts.arr[start], &j))
+			data->pts.arr[start].color = 0xFFFFFF;
+		data->pts.arr[start].color2 = data->pts.arr[start].color;
 		i += j;
 		start++;
 		x++;
@@ -89,6 +88,5 @@ int	parse_map(t_fdata *data)
 	data->pts.c = res;
 	data->pts.size = row * res;
 	normalize_coords(data, NULL);
-	ft_printf("%d rows %d cols\n", row ,res);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:33:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/07 13:22:12 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:07:46 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void	display_hud(t_fdata *d)
 	mlx_string_put(d->mlx, d->win, 10, 135, 0xF4E7FD,
 		"_______Translation mode_______");
 	mlx_string_put(d->mlx, d->win, 10, 150, 0xF4E7FD, "X translations:  A,D");
-	mlx_string_put(d->mlx, d->win, 10, 165, 0xF4E7FD, "Y translations:  W,D");
+	mlx_string_put(d->mlx, d->win, 10, 165, 0xF4E7FD, "Y translations:  W,S");
 	dynamic_hud(d);
 }

@@ -37,8 +37,14 @@ CLOCK: [2024-05-13 Mon 18:05]--[2024-05-13 Mon 19:37] =>  1:32
 CLOCK: [2024-05-29 Wed 10:52]--[2024-05-29 Wed 11:57] =>  1:05
 :END:
 **** CODE matrices combination
-**** CODE "Automatic" color on elevations
-**** CODING Right pixel "priority"
+**** CODED "Automatic" color on elevations
+CLOSED: [2024-06-13 Thu 14:45]
+:LOGBOOK:
+CLOCK: [2024-06-13 Thu 13:31]--[2024-06-13 Thu 14:45] =>  1:14
+CLOCK: [2024-06-13 Thu 11:21]--[2024-06-13 Thu 13:14] =>  1:53
+:END:
+**** CODED Right pixel "priority"
+CLOSED: [2024-06-13 Thu 11:21]
 :LOGBOOK:
 CLOCK: [2024-06-13 Thu 09:28]--[2024-06-13 Thu 10:28] =>  1:00
 CLOCK: [2024-06-12 Wed 12:54]--[2024-06-12 Wed 14:50] =>  1:56
