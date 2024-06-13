@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:01:15 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 20:25:40 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 20:48:26 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ int	handle_mouse(int but, int x, int y, t_fdata *d)
 
 static int	handle_key2(int key, t_fdata *d)
 {
-	if (key == KEY_R)
+	if (key == KEY_C)
+		return (toggle_colors(d));
+	else if (key == KEY_J || key == KEY_K)
+		return (change_elevation(d, key));
+	else if (key == KEY_R)
 		return (reset(d));
 	else if (key == KEY_L)
 		return (toggle_lines(d));
@@ -57,7 +61,10 @@ int	handle_key(int key, t_fdata *data)
 	else if (key == KEY_O || key == KEYM_O)
 		return (zoom_out(data));
 	else if (key == KEY_SP)
+	{
 		data->img.rot_mode = -data->img.rot_mode;
+		dynamic_hud(data);
+	}
 	else if (data->img.rot_mode == 1 && (key == KEY_Q || key == KEY_E
 		|| key == KEY_W || key == KEY_S
 		|| key == KEY_A || key == KEY_D || key == KEYM_Q || key == KEYM_E
@@ -67,10 +74,6 @@ int	handle_key(int key, t_fdata *data)
 		|| key == KEY_A || key == KEY_D
 		|| key == KEYM_W || key == KEYM_S || key == KEYM_A || key == KEYM_D))
 		return (translate(data, key));
-	else if (key == KEY_C)
-		return (toggle_colors(data));
-	else if (key == KEY_J || key == KEY_K)
-		return (change_elevation(data, key));
 	else
 		return (handle_key2(key, data));
 	return (1);

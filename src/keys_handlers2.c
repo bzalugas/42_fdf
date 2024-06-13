@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:58:36 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 20:24:39 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 20:46:40 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int	toggle_projection(t_fdata *d)
 	rotate_img(d, AXIS_Z, false);
 	rotate_img(d, AXIS_X, false);
 	d->img.refresh = true;
+	dynamic_hud(d);
 	return (1);
 }
