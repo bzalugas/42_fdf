@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 12:38:39 by bazaluga          #+#    #+#              #
-#    Updated: 2024/06/07 12:47:56 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/06/13 09:58:21 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -25,7 +25,8 @@ LIBFT	    :=	$(LIBFTDIR)/libft.a
 SRC	    :=  colors_utils.c display.c display_utils.c end_handling.c \
 		events_handling.c ft_atoi_forward.c ft_atou_base_forward.c \
 		ft_lstnew2.c ft_rad.c ft_sign.c garbage_collector.c \
-		hud.c line_drawing.c main.c map_parsing.c point_handling.c rotations.c
+		hud.c line_drawing.c main.c map_parsing.c pixels_handling.c \
+		point_handling.c rotations.c
 
 SRCMACOS    :=	mlx_compat_macos.c
 

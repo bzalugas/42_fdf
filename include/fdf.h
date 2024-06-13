@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/12 14:47:39 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 09:57:44 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,8 +145,11 @@ void			rotate_x(t_point *p, float angle);
 void			rotate_y(t_point *p, float angle);
 void			rotate_z(t_point *p, float angle);
 void			rotate_img(t_fdata *d, int axis, bool from_start);
-/*////////////////////////////////// UTILS ///////////////////////////////////*/
+/*////////////////////////////////// PIXELS //////////////////////////////////*/
 void			put_pixel_img(t_img *img, int x, int y, int color);
+void			init_pixels_arr(t_fdata *d);
+bool			is_infront(int xy[2], t_ptline *ptl, t_fdata *d);
+/*////////////////////////////////// UTILS ///////////////////////////////////*/
 void			config_img(t_fdata *d);
 void			create_image(t_fdata *d);
 void			normalize_coords(t_fdata *d, t_point *origin);
