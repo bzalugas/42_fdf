@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 15:09:19 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:24:24 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	config_img(t_fdata *d)
 	d->img.rx = DEFAULT_DEG_X;
 	d->img.ry = 0;
 	d->img.rz = DEFAULT_DEG_Z;
+	d->img.rot_mode = 1;
 	rotate_img(d, AXIS_Z, true);
 	rotate_img(d, AXIS_X, false);
 	ft_printf("sp = %d\n", d->img.sp);

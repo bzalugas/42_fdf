@@ -6,14 +6,14 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 12:58:23 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 15:07:52 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:51:48 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 #include <math.h>
 
-void	rotate_x(t_point *p, float angle)
+static void	rotate_x(t_point *p, float angle)
 {
 	double	y2;
 	double	z2;
@@ -24,7 +24,7 @@ void	rotate_x(t_point *p, float angle)
 	p->z = z2;
 }
 
-void	rotate_y(t_point *p, float angle)
+static void	rotate_y(t_point *p, float angle)
 {
 	double	x2;
 	double	z2;
@@ -35,7 +35,7 @@ void	rotate_y(t_point *p, float angle)
 	p->z = z2;
 }
 
-void	rotate_z(t_point *p, float angle)
+static void	rotate_z(t_point *p, float angle)
 {
 	double	x2;
 	double	y2;

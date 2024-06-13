@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:28:10 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 14:30:19 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:29:22 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,21 @@ static void	set_colors(int steps_up[3], int steps_down[3], t_fdata *d)
 	i = 0;
 	while (i < d->pts.size)
 	{
-		if (d->pts.arr[i].k >= steps_up[2])
+		if (d->pts.arr[i].k * d->img.elev == 0)
+			d->pts.arr[i].color = POS0;
+		else if (d->pts.arr[i].k * d->img.elev >= steps_up[2])
 			d->pts.arr[i].color = POS4;
-		else if (d->pts.arr[i].k >= steps_up[1])
+		else if (d->pts.arr[i].k * d->img.elev >= steps_up[1])
 			d->pts.arr[i].color = POS3;
-		else if (d->pts.arr[i].k >= steps_up[0])
+		else if (d->pts.arr[i].k * d->img.elev >= steps_up[0])
 			d->pts.arr[i].color = POS2;
-		else if (d->pts.arr[i].k > 5)
+		else if (d->pts.arr[i].k * d->img.elev > 5)
 			d->pts.arr[i].color = POS1;
-		else if (d->pts.arr[i].k <= steps_down[2])
+		else if (d->pts.arr[i].k * d->img.elev <= steps_down[2])
 			d->pts.arr[i].color = NEG3;
-		else if (d->pts.arr[i].k <= steps_down[1])
+		else if (d->pts.arr[i].k * d->img.elev <= steps_down[1])
 			d->pts.arr[i].color = NEG2;
-		else if (d->pts.arr[i].k <= steps_down[0])
+		else if (d->pts.arr[i].k * d->img.elev <= steps_down[0])
 			d->pts.arr[i].color = NEG1;
 		else
 			d->pts.arr[i].color = POS0;
@@ -65,10 +67,10 @@ void	auto_colors(t_fdata *d)
 	i = 1;
 	while (i < d->pts.size)
 	{
-		if (d->pts.arr[i].k > max_alt)
-			max_alt = d->pts.arr[i].k;
-		else if (d->pts.arr[i].k < min_alt)
-			min_alt = d->pts.arr[i].k;
+		if (d->pts.arr[i].k * d->img.elev > max_alt)
+			max_alt = d->pts.arr[i].k * d->img.elev;
+		else if (d->pts.arr[i].k * d->img.elev < min_alt)
+			min_alt = d->pts.arr[i].k * d->img.elev;
 		i++;
 	}
 	steps_up[0] = round(0.2 * max_alt);

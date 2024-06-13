@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:11:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 12:40:00 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:56:14 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	get_coords(t_fdata *d, t_point *p)
 {
 	if (!d->img.normalized)
 	{
-		p->x = round(d->img.center[0] + p->x);
-		p->y = round(d->img.center[1] + p->y);
+		p->x = round(d->img.center[0] + p->x + d->img.tx);
+		p->y = round(d->img.center[1] + p->y + d->img.ty);
 	}
 }
 

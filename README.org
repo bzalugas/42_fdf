@@ -32,6 +32,14 @@ CLOCK: [2024-05-13 Mon 18:05]--[2024-05-13 Mon 19:37] =>  1:32
 **** CODE Other events
 **** CODE Mouse rotations
 **** CODE Mouse zoom
+**** CODE Toggle lines
+**** CODE Reset position
+**** CODED Translations
+CLOSED: [2024-06-13 Thu 17:40]
+:LOGBOOK:
+CLOCK: [2024-06-13 Thu 17:39]--[2024-06-13 Thu 17:40] =>  0:01
+CLOCK: [2024-06-13 Thu 15:55]--[2024-06-13 Thu 16:39] =>  0:44
+:END:
 **** CODED Change elevations
 CLOSED: [2024-06-13 Thu 15:11]
 :LOGBOOK:

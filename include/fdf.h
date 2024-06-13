@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 15:07:15 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:24:16 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef enum e_event
 typedef enum e_key_linux
 {
 	ESC = 65307,
+	KEY_SP = 32,
 	KEY_I = 105,
 	KEY_O = 111,
 	KEY_E = 101,
@@ -134,10 +135,13 @@ typedef struct s_img
 	float		rx;
 	float		ry;
 	float		rz;
+	float		tx;
+	float		ty;
 	float		elev;
 	bool		normalized;
 	t_ptline	*ptslines;
 	t_col_type	col_mode;
+	char		rot_mode;
 }				t_img;
 
 typedef struct s_fdata
@@ -174,9 +178,9 @@ int				gradient(int c0, int c1, float distance, int ipixel);
 void			reset_colors(t_fdata *d);
 void			auto_colors(t_fdata *d);
 /*//////////////////////////////// ROTATIONS /////////////////////////////////*/
-void			rotate_x(t_point *p, float angle);
-void			rotate_y(t_point *p, float angle);
-void			rotate_z(t_point *p, float angle);
+/* void			rotate_x(t_point *p, float angle); */
+/* void			rotate_y(t_point *p, float angle); */
+/* void			rotate_z(t_point *p, float angle); */
 void			rotate_img(t_fdata *d, int axis, bool from_start);
 /*////////////////////////////////// PIXELS //////////////////////////////////*/
 void			put_pixel_img(t_img *img, int x, int y, int color);
@@ -194,7 +198,8 @@ int				zoom_in(t_fdata *d);
 int				zoom_out(t_fdata *d);
 int				rotate(t_fdata *d, int key);
 int				toggle_colors(t_fdata *d);
-void			change_elevation(t_fdata *d, int key);
+int				change_elevation(t_fdata *d, int key);
+int				translate(t_fdata *d, int key);
 
 /************************** COMPATIBILITY FUNCTIONS ***************************/
 int				mlx2_destroy_display(void *xvar);
