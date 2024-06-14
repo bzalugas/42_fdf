@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 12:38:39 by bazaluga          #+#    #+#              #
-#    Updated: 2024/06/14 17:37:56 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/06/14 18:01:16 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -54,7 +54,7 @@ OBJ	    :=  $(addprefix $(OBJDIR)/, $(OBJ))
 
 CC	    :=  cc
 
-CFLAGS	    :=  -Wall -Wextra -Werror -MMD
+CFLAGS	    :=  -Wall -Wextra -Werror
 
 ########### COLORS ##########
 
@@ -71,7 +71,7 @@ $(OBJDIR):
 
 $(OBJDIR)/%.o:	$(SRCDIR)/%.c Makefile | $(OBJDIR)
 		@printf $(GREEN)
-		$(CC) $(CFLAGS) -I$(INCDIR) -I$(MLXDIR) -c $< -o $@
+		$(CC) $(CFLAGS) -MMD -I$(INCDIR) -I$(MLXDIR) -c $< -o $@
 		@printf $(RESET)
 
 $(MLX):
