@@ -6,7 +6,7 @@
 #    By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 12:38:39 by bazaluga          #+#    #+#              #
-#    Updated: 2024/06/13 15:02:09 by bazaluga         ###   ########.fr        #
+#    Updated: 2024/06/14 15:30:37 by bazaluga         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -54,7 +54,7 @@ OBJ	    :=  $(addprefix $(OBJDIR)/, $(OBJ))
 
 CC	    :=  cc
 
-CFLAGS	    :=  -Wall -Wextra -Werror -MMD -MP -g
+CFLAGS	    :=  -Wall -Wextra -Werror -MMD -MP
 
 ########### COLORS ##########
 
@@ -70,9 +70,9 @@ $(OBJDIR):
 -include	$(OBJ:.o=.d)
 
 $(OBJDIR)/%.o:	$(SRCDIR)/%.c Makefile | $(OBJDIR)
-		@echo $(GREEN)"COMPILING sources to objects"
+		@printf $(GREEN)
 		$(CC) $(CFLAGS) -I$(INCDIR) -I$(MLXDIR) -c $< -o $@
-		@echo $(RESET)
+		@printf $(RESET)
 
 $(MLX):
 		@echo $(GREEN)"\n\tCOMPILING MLX"$(RESET)
@@ -88,6 +88,8 @@ $(NAME):	$(OBJ) $(MLX) $(LIBFT)
 		@echo $(GREEN)"LINKING objects to create $(NAME)"
 		$(CC) $(OBJ) $(CFLAGS) -L$(MLXDIR) -lmlx $(INCFLAGS) -o $(NAME)
 		@printf $(RESET)
+
+bonus:		$(NAME)
 
 clean:
 		@echo $(RED)"CLEANING OBJS"
@@ -108,4 +110,4 @@ fclean:		clean
 re:		fclean
 		@make all
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re bonus
