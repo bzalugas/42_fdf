@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:58:36 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/14 15:20:14 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 19:17:08 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 int	change_elevation(t_fdata *d, int key)
 {
 	if (key == KEY_J)
-		d->img.elev += 0.5;
+		d->img.elev += 0.2;
 	else if (key == KEY_K)
-		d->img.elev -= 0.5;
+		d->img.elev -= 0.2;
 	rotate_img(d, AXIS_Y, true);
 	rotate_img(d, AXIS_Z, false);
 	rotate_img(d, AXIS_X, false);
