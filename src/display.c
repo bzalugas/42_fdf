@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:11:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 19:16:04 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:56:25 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../include/mlx.h"
 #include <math.h>
 
-void	get_coords(t_fdata *d, t_point *p)
+static void	get_coords(t_fdata *d, t_point *p)
 {
 	if (!d->img.normalized)
 	{
@@ -44,8 +44,7 @@ static int	put_points(t_fdata *d)
 			put_pixel_img(&d->img, arr[i].x, arr[i].y, arr[i].color);
 		i++;
 	}
-	if (!d->img.normalized)
-		d->img.normalized = true;
+	d->img.normalized = true;
 	if (d->img.tog_lines == 1)
 		draw_lines(d);
 	mlx_put_image_to_window(d->mlx, d->win, d->img.ptr, d->img.offset[0],

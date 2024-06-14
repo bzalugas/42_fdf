@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:38:12 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/14 13:39:50 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:50:28 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,17 @@ int	rotate(t_fdata *d, int key)
 		add = 1;
 	else
 		add = 90;
-	if (key == KEY_E || key == KEYM_E)
+	if (key == KEY_E)
 		d->img.rz += add;
-	else if (key == KEY_Q || key == KEYM_Q)
+	else if (key == KEY_Q)
 		d->img.rz -= add;
-	else if (key == KEY_W || key == KEYM_W)
+	else if (key == KEY_W)
 		d->img.rx += add;
-	else if (key == KEY_S || key == KEYM_S)
+	else if (key == KEY_S)
 		d->img.rx -= add;
-	else if (key == KEY_D || key == KEYM_D)
+	else if (key == KEY_D)
 		d->img.ry += add;
-	else if (key == KEY_A || key == KEYM_A)
+	else if (key == KEY_A)
 		d->img.ry -= add;
 	normalize_angles(d);
 	rotate_img(d, AXIS_Y, true);

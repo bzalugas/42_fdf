@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:17:48 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 18:40:38 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:54:25 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	line_high(t_fdata *d, t_point *p0, t_point *p1, int deltas[2])
 	int	xy[2];
 	int	slope;
 	int	err;
-	int	inc[3]; //x,y,err
+	int	inc[3];
 
 	xy[0] = p0->x;
 	xy[1] = p0->y;
@@ -52,7 +52,7 @@ static void	line_low(t_fdata *d, t_point *p0, t_point *p1, int deltas[2])
 	int	xy[2];
 	int	slope;
 	int	err;
-	int	inc[3]; //x,y,err
+	int	inc[3];
 
 	xy[0] = p0->x;
 	xy[1] = p0->y;
@@ -130,7 +130,6 @@ int	draw_lines(t_fdata *d)
 
 	i = 0;
 	pts = d->pts.arr;
-
 	while (i < d->pts.size)
 	{
 		if (i % d->pts.c != d->pts.c - 1
