@@ -1,0 +1,3 @@
+42MapGenerator: https://github.com/jgigault/42MapGenerator
+
+img_to_map: https://github.com/ArthurSobreira/map_generator_fdf.git
