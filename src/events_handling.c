@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 13:01:15 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 20:48:26 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 13:40:04 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	handle_key(int key, t_fdata *data)
 	else if (key == KEY_SP)
 	{
 		data->img.rot_mode = -data->img.rot_mode;
-		dynamic_hud(data);
+		dynamic_hud(data, false);
 	}
 	else if (data->img.rot_mode == 1 && (key == KEY_Q || key == KEY_E
 		|| key == KEY_W || key == KEY_S

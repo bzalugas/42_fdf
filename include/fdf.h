@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 20:30:14 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 13:41:08 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,21 @@ typedef enum e_key_linux
 typedef enum e_key_macos
 {
 	ESCM = 53,
+	KEYM_SP = 49,
 	KEYM_I = 34,
 	KEYM_O = 31,
-	KEYM_W = 13,
-	KEYM_A = 0,
-	KEYM_S = 1,
-	KEYM_D = 2,
+	KEYM_E = 14,
 	KEYM_Q = 12,
-	KEYM_E = 14
+	KEYM_W = 13,
+	KEYM_S = 1,
+	KEYM_A = 0,
+	KEYM_D = 2,
+	KEYM_C = 8,
+	KEYM_J = 38,
+	KEYM_K = 40,
+	KEYM_R = 15,
+	KEYM_L = 37,
+	KEYM_P = 35
 }			t_key_macos;
 
 typedef struct s_point
@@ -162,6 +169,7 @@ typedef struct s_fdata
 	t_img		img;
 	t_pts_arr	pts;
 	int			fd;
+	char		*txts[5];
 	t_list		*trash;
 }				t_fdata;
 
@@ -181,7 +189,7 @@ int				refresh_display(t_fdata *d);
 int				draw_lines(t_fdata *d);
 /*/////////////////////////////////// HUD ////////////////////////////////////*/
 void			display_hud(t_fdata *d);
-void			dynamic_hud(t_fdata *d);
+void			dynamic_hud(t_fdata *d, bool first);
 /*////////////////////////////////// COLORS //////////////////////////////////*/
 int				trgb_to_i(int t, int r, int g, int b);
 int				i_to_trgb(int color, int *r, int *g, int *b);

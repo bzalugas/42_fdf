@@ -6,78 +6,67 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:33:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 21:11:24 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:15:34 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 #include "../include/mlx.h"
 
-static void	dynamic_hud2(t_fdata *d, char *txts[5])
+static void	reset_chunk(t_fdata *d)
+{
+	mlx_string_put(d->mlx, d->win, 10, 230, 0x0, d->txts[0]);
+	mlx_string_put(d->mlx, d->win, 10, 245, 0x0, d->txts[1]);
+	mlx_string_put(d->mlx, d->win, 10, 260, 0x0, d->txts[2]);
+	mlx_string_put(d->mlx, d->win, 10, 275, 0x0, d->txts[3]);
+	mlx_string_put(d->mlx, d->win, 10, 290, 0x0, d->txts[4]);
+	ft_free_garbage(d->txts[0], &d->trash);
+	ft_free_garbage(d->txts[1], &d->trash);
+	ft_free_garbage(d->txts[2], &d->trash);
+	ft_free_garbage(d->txts[3], &d->trash);
+	ft_free_garbage(d->txts[4], &d->trash);
+}
+
+static void	dynamic_hud2(t_fdata *d)
 {
 	char	*rots[3];
 
 	rots[0] = ft_ftoa(d->img.rx, 3);
 	rots[1] = ft_ftoa(d->img.ry, 3);
 	rots[2] = ft_ftoa(d->img.rz, 3);
-	txts[2] = ft_strjoin("Rotation X: ", rots[0]);
-	txts[3] = ft_strjoin("Rotation Y: ", rots[1]);
-	txts[4] = ft_strjoin("Rotation Z: ", rots[2]);
+	d->txts[2] = ft_strjoin("Rotation X: ", rots[0]);
+	d->txts[3] = ft_strjoin("Rotation Y: ", rots[1]);
+	d->txts[4] = ft_strjoin("Rotation Z: ", rots[2]);
+	ft_add_garbage(&d->trash, d->txts[2]);
+	ft_add_garbage(&d->trash, d->txts[3]);
+	ft_add_garbage(&d->trash, d->txts[4]);
 	free(rots[0]);
 	free(rots[1]);
 	free(rots[2]);
-	mlx_string_put(d->mlx, d->win, 10, 230, 0xF4E7FD, txts[0]);
-	mlx_string_put(d->mlx, d->win, 10, 245, 0xF4E7FD, txts[1]);
-	mlx_string_put(d->mlx, d->win, 10, 260, 0xF4E7FD, txts[2]);
-	mlx_string_put(d->mlx, d->win, 10, 275, 0xF4E7FD, txts[3]);
-	mlx_string_put(d->mlx, d->win, 10, 290, 0xF4E7FD, txts[4]);
-	free(txts[0]);
-	free(txts[1]);
-	free(txts[2]);
-	free(txts[3]);
-	free(txts[4]);
+	mlx_string_put(d->mlx, d->win, 10, 230, 0xF4E7FD, d->txts[0]);
+	mlx_string_put(d->mlx, d->win, 10, 245, 0xF4E7FD, d->txts[1]);
+	mlx_string_put(d->mlx, d->win, 10, 260, 0xF4E7FD, d->txts[2]);
+	mlx_string_put(d->mlx, d->win, 10, 275, 0xF4E7FD, d->txts[3]);
+	mlx_string_put(d->mlx, d->win, 10, 290, 0xF4E7FD, d->txts[4]);
 }
 
-static void	reset_chunk(t_fdata *d, int cols[2], int rows[2])
+void	dynamic_hud(t_fdata *d, bool first)
 {
-	int	x;
-	int	y;
-
-	y = cols[0];
-	while (y < cols[1])
-	{
-		x = rows[0];
-		while (x < rows[1])
-		{
-			mlx_pixel_put(d->mlx, d->win, x, y, 0x0);
-			x++;
-		}
-		y++;
-	}
-}
-
-void	dynamic_hud(t_fdata *d)
-{
-	//Optimize this one
-	char	*txts[5];
-	char	*modes[2];
-
 	mlx_string_put(d->mlx, d->win, 10, 215, 0xF4E7FD,
 		"_____________INFO_____________");
-	reset_chunk(d, (int[2]){220, 290}, (int[2]){80, 160});
+	if (!first)
+		reset_chunk(d);
 	if (d->img.rot_mode == 1)
-		modes[0] = ft_strdup("ROTATIONS");
+		d->txts[0] = ft_strjoin("Movement:   ", "ROTATIONS");
 	else
-		modes[0] = ft_strdup("TRANSLATIONS");
+		d->txts[0] = ft_strjoin("Movement:   ", "TRANSLATIONS");
 	if (d->img.projection == 1)
-		modes[1] = ft_strdup("ISOMETRIC");
+		d->txts[1] = ft_strjoin("Projection: ", "ISOMETRIC");
 	else
-		modes[1] = ft_strdup("MULTIVIEW");
-	txts[0] = ft_strjoin("Movement:   ", modes[0]);
-	txts[1] = ft_strjoin("Projection: ", modes[1]);
-	free(modes[0]);
-	free(modes[1]);
-	dynamic_hud2(d, txts);
+		d->txts[1] = ft_strjoin("Projection: ", "MULTIVIEW");
+	ft_add_garbage(&d->trash, d->txts[0]);
+	ft_add_garbage(&d->trash, d->txts[1]);
+	dynamic_hud2(d);
 }
 
 void	display_hud(t_fdata *d)
@@ -97,5 +86,5 @@ void	display_hud(t_fdata *d)
 	mlx_string_put(d->mlx, d->win, 10, 165, 0xF4E7FD, "X translations:  A,D");
 	mlx_string_put(d->mlx, d->win, 10, 180, 0xF4E7FD, "Y translations:  W,S");
 	mlx_string_put(d->mlx, d->win, 10, 200, 0xF4E7FD, "Reset:           R");
-	dynamic_hud(d);
+	dynamic_hud(d, true);
 }
