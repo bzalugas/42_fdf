@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:28:10 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 17:29:22 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:11:34 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	reset_colors(t_fdata *d)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < d->pts.size)
@@ -27,7 +27,7 @@ void	reset_colors(t_fdata *d)
 
 static void	set_colors(int steps_up[3], int steps_down[3], t_fdata *d)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < d->pts.size)
@@ -56,11 +56,11 @@ static void	set_colors(int steps_up[3], int steps_down[3], t_fdata *d)
 
 void	auto_colors(t_fdata *d)
 {
-	int	i;
-	int	max_alt;
-	int	min_alt;
-	int	steps_up[3];
-	int	steps_down[3];
+	size_t	i;
+	int		max_alt;
+	int		min_alt;
+	int		steps_up[3];
+	int		steps_down[3];
 
 	max_alt = d->pts.arr[0].k;
 	min_alt = max_alt;

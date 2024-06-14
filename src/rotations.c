@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 12:58:23 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/14 15:00:17 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:14:10 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	rotate_z(t_point *p, float angle)
 
 void	rotate_img(t_fdata *d, int axis, bool from_start)
 {
-	int		i;
+	size_t	i;
 	void	(*fun[3])(t_point *, float);
 	float	angle[3];
 

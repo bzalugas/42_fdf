@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:17:48 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/14 14:54:25 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:12:48 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ static int	draw_line(t_fdata *d, t_point *p0, t_point *p1)
 int	draw_lines(t_fdata *d)
 {
 	t_point	*pts;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	pts = d->pts.arr;

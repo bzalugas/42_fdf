@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:55:11 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/13 14:43:59 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:13:25 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ static int	get_points_line(char *line, t_fdata *data, int y, int start)
 int	parse_map(t_fdata *data)
 {
 	char		*line;
-	int			row;
-	int			res;
-	int			prev_ncol;
+	size_t		row;
+	size_t		res;
+	size_t		prev_ncol;
 
 	line = get_next_line(data->fd);
 	row = 0;

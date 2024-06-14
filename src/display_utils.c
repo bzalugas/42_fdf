@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:49:46 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/14 14:28:16 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:12:29 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,19 @@
 
 void	normalize_coords(t_fdata *d, t_point *origin)
 {
-	int		i;
+	size_t	i;
 	t_point	mid;
 
 	if (!origin)
 		mid = d->pts.arr[(d->pts.r / 2) * d->pts.c + (d->pts.c / 2)];
 	else
 		mid = *origin;
-	i = -1;
-	while (++i < d->pts.size)
+	i = 0;
+	while (i < d->pts.size)
 	{
 		d->pts.arr[i].i = d->pts.arr[i].i - mid.i;
 		d->pts.arr[i].j = d->pts.arr[i].j - mid.j;
+		i++;
 	}
 }
 

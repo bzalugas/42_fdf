@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/14 15:09:17 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:21:35 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,9 @@ typedef struct s_ptline
 
 typedef struct s_pts_arr
 {
-	int		r; //rows => change types to size_t !!!!
-	int		c;
-	int		size;
+	size_t	r;
+	size_t	c;
+	size_t	size;
 	t_point	*arr;
 }				t_pts_arr;
 

@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:11:41 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/14 14:56:25 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:12:03 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	get_coords(t_fdata *d, t_point *p)
 
 static int	put_points(t_fdata *d)
 {
-	int			i;
+	size_t		i;
 	t_point		*arr;
 
 	if (!d->img.ptr)
