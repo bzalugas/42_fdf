@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/14 15:56:27 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 16:10:33 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef enum e_col_type
 {
 	COLOR_RAW,
 	COLOR_AUTO
-}			t_col_type;
+}						t_col_type;
 
 typedef enum e_palette_pos
 {
@@ -40,7 +40,7 @@ typedef enum e_palette_pos
 	POS2 = 0xba533a,
 	POS1 = 0xedde58,
 	POS0 = 0x3ca814
-}			t_palette_pos;
+}				t_palette_pos;
 
 typedef enum e_palette_neg
 {
@@ -48,7 +48,7 @@ typedef enum e_palette_neg
 	NEG2 = 0x0e7ead,
 	NEG1 = 0x3fa1b5,
 	NEG0 = 0x3ca814
-}			t_palette_neg;
+}				t_palette_neg;
 
 typedef enum e_event
 {
@@ -65,7 +65,7 @@ typedef enum e_button_linux
 {
 	MS_WHEEL_UP = 4,
 	MS_WHEEL_DN = 5
-}			t_button_linux;
+}				t_button_linux;
 
 # ifdef __linux__
 
@@ -87,7 +87,7 @@ typedef enum e_key
 	KEY_R = 114,
 	KEY_L = 108,
 	KEY_P = 112
-}			t_key;
+}				t_key;
 # else
 
 typedef enum e_key
@@ -108,7 +108,7 @@ typedef enum e_key
 	KEY_R = 15,
 	KEY_L = 37,
 	KEY_P = 35
-}			t_key;
+}				t_key;
 # endif
 
 typedef struct s_point
