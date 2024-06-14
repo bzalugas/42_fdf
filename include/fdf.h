@@ -6,13 +6,13 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:29:57 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/14 15:21:35 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:56:27 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include "libft/libft.h"
+# include "libft.h"
 # define WIDTH 1280
 # define HEIGHT 720
 # define DEFAULT_OFFSETX 200
