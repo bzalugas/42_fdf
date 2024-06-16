@@ -6,7 +6,7 @@
 /*   By: bazaluga <bazaluga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:32:20 by bazaluga          #+#    #+#             */
-/*   Updated: 2024/06/07 13:03:30 by bazaluga         ###   ########.fr       */
+/*   Updated: 2024/06/16 19:22:52 by bazaluga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	convert(char *res, double n, unsigned long int_part, size_t *sizes)
 		if (sizes[1] == 0)
 			res[--sizes[0]] = '.';
 	}
-	while (sizes[0] > 0 && int_part >= 0)
+	while (sizes[0] > 0)
 	{
 		res[sizes[0] - 1] = int_part % 10 + '0';
 		int_part /= 10;
