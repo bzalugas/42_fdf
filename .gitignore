@@ -10,3 +10,5 @@ sources.tgz
 *.mp4
 fdf
 test_maps/
+42MapGenerator/
+big_maps/*.fdf
